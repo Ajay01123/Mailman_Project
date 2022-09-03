@@ -47,7 +47,7 @@ class Register
 
       $_SESSION['name'] = "Username or password not matched";
 
-      header("Location:../mailman/Sign-in.php");
+      header("Location:../mailman/index.php");
     }
   }
   public function profile($get)
@@ -63,7 +63,7 @@ class Register
   {
     unset($_SESSION['email']);
 
-    header("Location:../mailman/Sign-in.php");
+    header("Location:../mailman/index.php");
   }
 
   public function url($url)

@@ -5,7 +5,7 @@ if (!isset($_SESSION)) {
 include '../php/database.php';
 if (!isset($_SERVER['HTTP_REFERER'])) {
 
-    header("Location:../mailman/Sign-in.php");
+    header("Location:../mailman/index.php");
 
     exit;
 }
@@ -29,10 +29,10 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <?php
             if (isset($_SESSION['name'])) {
             ?>
-                <div class="alert alert-danger alert-dismissible fade show" id="flash-msg" role="alert">
-                    <strong>Send</strong> <?php echo $_SESSION['name']  ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+            <div class="alert alert-danger alert-dismissible fade show" id="flash-msg" role="alert">
+                <strong>Send</strong> <?php echo $_SESSION['name']  ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
 
             <?php
                 unset($_SESSION['name']);

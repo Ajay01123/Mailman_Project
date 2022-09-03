@@ -15,7 +15,7 @@ foreach ($obj->data as $row) {
 
 
 if ($_SESSION['email'] == "") {
-    header("Location:../mailman/Sign-in.php");
+    header("Location:../mailman/index.php");
 }
 
 

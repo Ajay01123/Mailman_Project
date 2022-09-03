@@ -1,171 +1,115 @@
- <?php
-  //session_start();
-  include_once '../php/connection.php';
-  if (!isset($_SERVER['HTTP_REFERER'])) {
+<?php
 
-    header("Location:../mailman/Sign-in.php");
+if (!isset($_SESSION)) {
+  session_start();
+}
+include '../php/login.php ';
+//print_r ($_SESSION['email']);
 
-    exit;
-  }
+include '../php/database.php';
+if ($_SESSION['email'] != "") {
+  header("Location:../mailman/dashboard.php");
+}
+?>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Sign-in-page</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5 " style="border:2px solid red;">
+            <?php
+      if (isset($_SESSION['status'])) {
+      ?>
+            <div class="alert alert-primary alert-dismissible fade show" id="flash-msg" role="alert">
+                <strong>Send</strong> <?php echo $_SESSION['status']  ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <?php
+        unset($_SESSION['status']);
+      }
+      ?>
+            <?php
+      if (isset($_SESSION['name'])) {
+      ?>
+            <div class="alert alert-danger alert-dismissible fade show" id="flash-msg" role="alert">
+                <strong>ERROR!</strong> <?php echo $_SESSION['name']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <?php
+        unset($_SESSION['name']);
+      }
+      ?>
+            <?php
+      if (isset($_SESSION['user'])) {
+      ?>
+            <div class="alert alert-secondary alert-dismissible fade show" id="flash-msg" role="alert">
+                <strong>Success</strong> <?php echo $_SESSION['user']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <?php
+        unset($_SESSION['user']);
+      }
+      ?>
 
 
-  ?>
+            <div class="col-sm-5 my-4">
+                <img src="../images/emai.jpg" class="img-fluid" width="500">
+            </div>
+            <div class="col-sm-6 my-5 ">
+                <h1>Login to your account</h1>
+                <form action="../php/login.php" method="post" onsubmit="return validation()">
+                    <br><br>
+                    <input type="text" class="form-control" placeholder="Email" name="email" id="email" value="<?php if (isset($email)) {
+                                                                                                        echo $email;
+                                                                                                      } ?>">
 
- <html>
+                    <span class="text-danger" id="semail"></span><br><br>
+                    <input type="password" class="form-control" placeholder="Password" name="password" id="password">
+                    <span class="text-danger" id="pass"></span><br><br>
 
- <head>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="submit" name="submit" class="btn btn-success  btn-lg float-right"
+                            id="login">Sign-in </button>
+                    </div>
+                    <a href="../mailman/send_email.php">Forget Password</a>
+                    <p>Don`t have an account yet?</p>
+                    <a href="Sign-up.php">Create one </a>
 
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-   <link rel="stylesheet" href="../css/main.css">
-   <!--- Bootstrap CSS -->
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-   <title>Mailman</title>
-
- </head>
-
- <body>
-   <div class="container">
-     <div class="row mt-5">
-       <?php
-
-
-        ?>
-       <div class="col-sm-12" style="background:white; border:2px solid red;">
-
-         <h1>Mailman</h1>
-         <span> </span>
-         <div class="col-sm-10">
-           <p>Create your account</p>
-           <form action="" method="POST" enctype="multipart/form-data" onsubmit="return validation()">
-             <div class="row  ">
+                </form>
+            </div>
+        </div>
+    </div>
 
 
-               <div class="col-md-2 order-md-last mb-3" id="preview">
-                 <img src="../images/index.png" id="default-preview" class="text-center" style="width: 150px;">
 
-                 <div id="imgpreview"></div>
-                 <input type="file" id="image" name="image" accept="image/png, image/jpg, image/jpeg" />
-                 <span class="text-danger" id="InpImg"></span>
+    <script src="../Js/style.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function() {
+        $("#flash-msg").delay(1000).fadeOut("slow");
+    });
+    </script>
 
-               </div>
-               <div class="input">
+</body>
 
-               </div>
-
-
-               <div class="col-md-10 ">
-                 <div class="row">
-                   <div class="col-md-8">
-                     <input type="text" class="form-control" placeholder="Enter your first name" id="fname" name="fname" />
-                     <span class="text-danger" id="txtname"></span><br>
-                     <input type="text" class="form-control" placeholder="Enter your last name" id="lname" name="lname">
-                     <span class="text-danger" id="lastname"></span><br>
-                     <input type="text" class="form-control" placeholder="Select Username" name="username" id="user">
-                     <span class="text-danger" id="username"></span><br>
-                     <span id="us" class="d-grid gap-2 d-md-flex justify-content-md-end"></span>
-                     <div>
-                       <input type="text" class="form-control" name="email" placeholder="Enter your Mailman" id="email">
-                       <span class="text-danger" id="useremail"></span>
-                       <span id="email_id"></span>
-                       <span class="d-grid gap-2 d-md-flex justify-content-md-end">xyz@mailman.com</span>
-                     </div>
-                     <br>
-                   </div>
-
-                 </div>
-                 <div class="row ">
-                   <div class="col-md-8">
-                     <input type="eamil" class="form-control" placeholder="Enter your recovery email" id="remail" name="remail">
-                     <span class="text-danger" id="recovery"></span>
-                     &nbsp;
-                     <input type="password" class="form-control" placeholder="Enter new password here" id="pass" name="password">
-                     <span class="text-danger" id="password"></span>
-                     &nbsp;
-                     <input type="password" class="form-control" placeholder="Confirm password" id="cpass" name="confirmpassword">
-                     <span class="text-danger" id="cpassword"></span>
-                     &nbsp;<br>
-                     <input type="checkbox" name="agreement" id="agreement" /> I Agreed with the above Terms & Conditions.<br>
-                     <span class="text-danger" id="agree"></span>
-                     <br><br>
-                     <button type="submit" name="submit" class="btn btn-success" id="submit">Submit</button>
-                     <a href="Sign-in.php" class="btn btn-success">Sign-in-inserted</a>
-                   </div>
-                 </div>
-               </div>
-           </form>
-         </div>
-       </div>
-
-       <script src="../Js/home.js"></script>
-       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-       <script>
-         $(document).ready(function() {
-           $("#flash-msg").delay(1000).fadeOut("slow");
-         });
-         //console.log("asjdajfda");
-         $('document').ready(function() {
-           $('#user').keyup(function() {
-             var user = $(this).val();
-
-             $.ajax({
-               url: '../php/username.php',
-               method: "POST",
-               data: {
-                 result: user
-               },
-               success: function(data) {
-                 if (data != '0') {
-                   if (user.length > 0) {
-                     $('#us').html('<span class="text-danger">Username not available</span>');
-                     //$('#submit').attr("disabled", false);
-                   }
-                 } else {
-                   $('#us').html('<span class="text-success">Username available</span>');
-                   //$('#submit').attr("disabled", true);
-
-                 }
-
-               }
-
-             })
-           });
-         });
-         $('document').ready(function() {
-           $('#email').change(function() {
-             var email = $(this).val();
-
-             $.ajax({
-               url: '../php/email_uqniue.php',
-               method: "POST",
-               data: {
-                 email_id: email
-               },
-               success: function(data) {
-
-                 if (data != '0') {
-
-                   $('#email_id').html('<span class="text-danger">Email already exists</span> ');
-                   $('#submit').attr("disabled", true);
-
-                   //$('#email_id').remove('<span class="text-success"></span>');
-                 } else {
-                   $('#email_id').html('<span class="text-success"></span>');
-                   $('#submit').attr("disabled", false);
-                 }
-
-               }
-
-             })
-           });
-         });
-       </script>
-
- </body>
-
- </html>
+</html>
