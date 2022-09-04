@@ -144,7 +144,7 @@ foreach ($obj->data as $row) {
                         </div>
                     </div>
                 </div>
-
+                <br><br>
                 <nav class="nav flex-column">
                     <a class="nav-link active" aria-current="page" href="../mailman/dashboard.php">Inbox</a>
 

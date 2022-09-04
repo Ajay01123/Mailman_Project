@@ -129,14 +129,16 @@ if ($_SESSION['email'] == "") {
                             </div>
                             <div class="modal-body">
 
-                                <form action="../php/composer.php" method="POST" enctype="multipart/form-data">
+                                <form action="../php/composer.php" method="POST" enctype="multipart/form-data"
+                                    onsubmit="return validation()">
                                     <input type="email" class="form-control" placeholder="TO" name="to"><br>
                                     <input type="text" class="form-control" placeholder="CC" name="cc"><br>
                                     <input type="text" class="form-control" placeholder="BCC" name="bcc"><br>
                                     <input type="text" class="form-control" placeholder="Subject" name="sub"><br>
                                     <textarea class="form-control" rows="5" cols="3" placeholder="Message"
                                         name="msg"></textarea><br>
-                                    <input type="file" class="form-control" name="Image[]" multiple><br>
+                                    <input type="file" class="form-control" name="Image[]" id="image" multiple>
+                                    <span class="text-danger" id="Img"></span><br>
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal" name="close"
@@ -147,7 +149,8 @@ if ($_SESSION['email'] == "") {
                         </div>
                     </div>
                 </div>
-
+                <br>
+                <br>
                 <nav class="nav flex-column ">
                     <a class="nav-link active" aria-current="page" href="#">Inbox</a>
 
@@ -171,12 +174,12 @@ if ($_SESSION['email'] == "") {
                                     </th>
 
 
-                                    <th><button type="submit" form="my-form" name="update" class="btn btn-danger"
+                                    <th>
+                                        <button type="submit" form="my-form" name="update" class="btn btn-danger"
                                             id="btn" disabled="true">Delete</button>
                                         <button type="button" id="read" class="btn btn-info">Read</button>
                                         <button type="button" class="btn btn-info">Unread</button>
                                     </th>
-
                                 </tr>
                             </thead>
 
@@ -186,11 +189,13 @@ if ($_SESSION['email'] == "") {
                             foreach ($record as $row) {
                             ?>
                             <tr id="table">
+                                <div id="search_result"></div>
                                 <td style="width:5px;">
                                     <input type="checkbox" class="checkItem Item1" name=" delete_data[]"
                                         value=" <?php echo $row['Id']; ?>">
                                 </td>
                                 <div>
+
                                     <td class="<?php echo $row['Id']; ?>"><?php echo $row['From']; ?></td>
                                     <td class="<?php echo $row['Id']; ?>"><?php echo $row['Subject']; ?></td>
                                     <td class="<?php echo $row['Id']; ?>"><?php echo $row['DateTime']; ?></td>
@@ -200,6 +205,7 @@ if ($_SESSION['email'] == "") {
                             <?php
                             }
                             ?>
+
                             <tbody>
                                 <tr>
 
@@ -208,7 +214,7 @@ if ($_SESSION['email'] == "") {
                         </table>
                     </form>
 
-                    <div id="search_result"></div>
+
                 </div>
                 <?php
                 include '../php/dbconnect.php';
@@ -248,6 +254,24 @@ if ($_SESSION['email'] == "") {
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../Js/dashboard.js"></script>
+    <script>
+    function validation() {
+
+        var image = document.getElementById('image');
+
+        var size = parseFloat(image.files[0].size / (1024 * 25)).toFixed(2);
+        if (size > 25) {
+            document.getElementById("Img").innerHTML = "please select less then 25MB size";
+            return false;
+
+
+        } else {
+            document.getElementById("Img").innerHTML = "";
+            return true;
+        }
+    }
+    </script>
+
 
 </body>
 

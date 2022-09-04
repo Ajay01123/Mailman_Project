@@ -14,9 +14,6 @@ $em = $_SESSION['email'];
 $query = "SELECT * FROM Register_tb where email='$em'";
 $obj->profile($query);
 foreach ($obj->data as $row) {
-    // print_r($row->image);
-    //die;
-
 }
 
 ?>
@@ -44,12 +41,24 @@ foreach ($obj->data as $row) {
             if (isset($_SESSION['user'])) {
             ?>
             <div class="alert alert-danger alert-dismissible fade show" id="flash-msg" role="alert">
-                <strong>!</strong><?php echo $_SESSION['user']; ?>
+                <strong></strong><?php echo $_SESSION['user']; ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
             <?php
                 unset($_SESSION['user']);
+            }
+            ?>
+            <?php
+            if (isset($_SESSION['name'])) {
+            ?>
+            <div class="alert alert-info alert-dismissible fade show" id="flash-msg" role="alert">
+                <strong></strong><?php echo $_SESSION['name']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <?php
+                unset($_SESSION['name']);
             }
             ?>
             <div class="col-sm-3" style="min-height: 80px; background:antiquewhite;">
@@ -121,7 +130,8 @@ foreach ($obj->data as $row) {
                         </div>
                     </div>
                 </div>
-
+                <br>
+                <br>
                 <nav class="nav flex-column">
                     <a class="nav-link active" aria-current="page" href="../mailman/dashboard.php">Inbox</a>
 
@@ -141,10 +151,12 @@ foreach ($obj->data as $row) {
                             </th>
 
                             <th>
+                                <button type="submit" name="delete" form="my-form" id="btn" disabled="true"
+                                    class="btn btn-danger">
+                                    Delete</button>
                                 <button type="submit" form="my-form" name="update" class=" btn btn-info" id="restore"
                                     disabled="true">Restore</button>
-                                <button type="button" name="delete" id="btn" disabled="true" class="btn btn-danger">
-                                    Delete</button>
+
                             </th>
 
                         </tr>
@@ -167,11 +179,11 @@ foreach ($obj->data as $row) {
                                     <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
                                     <?php
 
-                                        } elseif ($row['Inbox_detete'] == 0) {
+                                        } elseif ($row['Inbox_detete'] != 0) {
                                         ?>
                                     <td class="<?php echo $row['Id']; ?>"><?php echo $row['From']; ?></td>
                                     <?php } else {
-                                        ?> <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
+                                        ?> <td class="<?php echo $row['Id']; ?>"><?php echo $row['From']; ?></td>
                                     <?php
                                         } ?>
 
@@ -202,7 +214,7 @@ foreach ($obj->data as $row) {
                                         ?>
                                     <td class="<?php echo $row['Id']; ?>"><?php echo $row['From']; ?></td>
                                     <?php } else {
-                                        ?> <td class="<?php echo $row['Id']; ?>"><?php echo $row['TO']; ?></td>
+                                        ?> <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
                                     <?php
                                         } ?>
 

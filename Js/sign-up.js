@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $("#flash-msg").delay(1000).fadeOut("slow");
 });
-//console.log("asjdajfda");
+
 $('document').ready(function () {
     $('#user').keyup(function () {
         var user = $(this).val();

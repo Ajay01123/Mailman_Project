@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
   $read = 1;
 
   $image_name = count($_FILES['Image']);
-  //$image_arr = array();
+
   $imgval = [];
   for ($i = 0; $i < $image_name; $i++) {
 
@@ -32,8 +32,10 @@ if (isset($_POST['submit'])) {
     $tempname = $_FILES['Image']['tmp_name'][$i];
     $folder = "../Upload1/" . $file;
     $imgval[] = $file;
-
-    move_uploaded_file($tempname, $folder . "-" . Time());
+    header("Content-Disposition: attachment; filename='" .  $file_name . "'");
+    header("Content-length: $size");
+    header("Content-type: $type");
+    $file_name = move_uploaded_file($tempname, $folder . "-" . Time());
   }
 
 

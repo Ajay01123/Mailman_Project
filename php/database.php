@@ -33,8 +33,12 @@ class Register
   {
 
     $password = md5($password);
+
+
     $query = "SELECT * FROM Register_tb WHERE (email = '$email' or username ='$email')and `password`='$password'";
     $result = mysqli_query($this->conn, $query);
+
+
     if (mysqli_num_rows($result) > 0) {
 
       $row = mysqli_fetch_array($result);

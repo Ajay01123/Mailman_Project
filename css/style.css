@@ -63,6 +63,5 @@ a:hover {
 }
 
 .active {
-    background-color: wheat;
-
+    background: wheat;
 }
