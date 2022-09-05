@@ -29,7 +29,7 @@ class Model
     {
         $update = "UPDATE `Register_tb` SET `password`= '$password', reset_date =NULL  WHERE reset_token= '$token'";
         if (mysqli_query($this->conn, $update)) {
-            echo "<script>window.location.href('../mailman/index.php')alert('Password Updated Successfully')</script>";
+            echo "<script>window.location.replace('../mailman/index.php');alert('Password Updated Successfully')</script>";
         } else {
             echo "not updated";
         }

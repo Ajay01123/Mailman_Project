@@ -57,9 +57,7 @@ class Register
   public function profile($get)
   {
     $sql = $this->conn->query($get);
-
     $value = $sql->fetch_object();
-
     $this->data[] = $value;
     return $this->data;
   }
