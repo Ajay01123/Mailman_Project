@@ -2,26 +2,18 @@
 if (!isset($_SESSION)) {
   session_start();
 }
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+include '../php/connect.php';
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
+//$con = new mysqli("localhost", "tse", "0wi&lbRuPuv", "Ajay");
+
 if (isset($_GET['reset_token'])) {
-
-  $con = new mysqli("localhost", "tse", "0wi&lbRuPuv", "Ajay");
-
   $token = $_GET['reset_token'];
-
   if (isset($_POST['update'])) {
     $password = $_POST['password'];
     $password = md5($password);
-    $update = "UPDATE `Register_tb` SET password= '$password', reset_date =NULL  WHERE reset_token= '$token'";
-
-    if (mysqli_query($con, $update)) {
-      $_SESSION['user'] = "Password Updated Successfully";
-      header('location:../mailman/index.php');
-    } else {
-      echo "not updated";
-    }
+    $db->forget_password($password, $token);
   }
 
 ?>
