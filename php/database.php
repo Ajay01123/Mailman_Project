@@ -8,7 +8,7 @@ class Register
   public $host = 'localhost';
   public $username = 'tse';
   public $password = '0wi&lbRuPuv';
-  public $dbname = 'mailman';
+  public $dbname = 'Ajay';
   public $conn;
 
   public function __construct()
