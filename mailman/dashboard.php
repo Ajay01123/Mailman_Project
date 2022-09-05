@@ -193,7 +193,7 @@ if ($_SESSION['email'] == "") {
                                         <button type="submit" form="my-form" name="update" class="btn btn-danger"
                                             id="btn" disabled="true">Delete</button>
                                         <button type="button" id="read" class="btn btn-info" name="Read"
-                                            disabled="true">Read</button>
+                                            disabled>Read</button>
 
                                     </th>
                                 </tr>
