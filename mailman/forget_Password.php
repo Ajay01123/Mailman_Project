@@ -5,7 +5,7 @@ if (!isset($_SESSION)) {
 
 if (isset($_GET['reset_token'])) {
   include '../php/username.php';
-  $con = mysqli_connect("localhost", "tse", "0wi&lbRuPuv", "Ajay");
+  $con = new mysqli("localhost", "tse", "0wi&lbRuPuv", "Ajay");
   $token = $_GET['reset_token'];
 
   if (isset($_POST['update'])) {
