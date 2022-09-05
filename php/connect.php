@@ -31,7 +31,7 @@ class Model
         if (mysqli_query($this->conn, $update)) {
             echo "<script>window.location.replace('../mailman/index.php');alert('Password Updated Successfully')</script>";
         } else {
-            echo "not updated";
+            echo " Password not updated";
         }
     }
 }
