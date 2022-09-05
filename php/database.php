@@ -132,6 +132,18 @@ class Register
       return false;
     }
   }
+  public function forget_password($password, $token)
+  {
+    $update = "UPDATE `Register_tb` SET password= '$password', reset_date =NULL  WHERE reset_token= '$token'";
+
+    if (mysqli_query($this->conn, $update)) {
+      $_SESSION['user'] = "Password Updated Successfully";
+      header('location:../mailman/index.php');
+    } else {
+      echo "not updated";
+    }
+  }
 }
+
 
 $obj = new Register();
