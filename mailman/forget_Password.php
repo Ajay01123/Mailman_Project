@@ -7,7 +7,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 if (isset($_GET['reset_token'])) {
 
-  $con = new mysqli("localhost", "root", "hestabit", "mailman");
+  $con = new mysqli("localhost", "tse", "0wi&lbRuPuv", "Ajay");
 
   $token = $_GET['reset_token'];
 

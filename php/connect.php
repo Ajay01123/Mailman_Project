@@ -2,9 +2,9 @@
 class Model
 {
     public $host = 'localhost';
-    public $username = 'root';
-    public $password = 'hestabit';
-    public $dbname = 'mailman';
+    public $username = 'tse';
+    public $password = '0wi&lbRuPuv';
+    public $dbname = 'Ajay';
     public $conn;
 
     public function __construct()

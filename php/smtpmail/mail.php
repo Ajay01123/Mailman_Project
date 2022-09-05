@@ -46,11 +46,11 @@ function sendMail($remail, $reset_token)
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
-$con = new  mysqli("localhost", "root", "hestabit", "mailman");
+$con = new  mysqli("localhost", "tse", "0wi&lbRuPuv", "Ajay");
 
 if (isset($_POST['send'])) {
     $remail = $_POST['remail'];
-    //$result=$obj->send($remail);
+
     $query = "SELECT * FROM `Register_tb`where `recovery_email`='$remail'";
     //echo $query;
     //die();
