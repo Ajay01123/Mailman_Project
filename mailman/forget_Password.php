@@ -3,17 +3,16 @@ if (!isset($_SESSION)) {
   session_start();
 }
 include '../php/connect.php';
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 //$con = new mysqli("localhost", "tse", "0wi&lbRuPuv", "Ajay");
-
+$db->forget_password($password, $token);
 if (isset($_GET['reset_token'])) {
   $token = $_GET['reset_token'];
   if (isset($_POST['update'])) {
     $password = $_POST['password'];
     $password = md5($password);
-    $db->forget_password($password, $token);
   }
 
 ?>

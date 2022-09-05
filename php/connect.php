@@ -11,7 +11,7 @@ class Model
     {
         $this->conn = new mysqli($this->host, $this->username, $this->password, $this->dbname);
         if (mysqli_connect_errno()) {
-            echo "connection failed ";
+            echo "connection failed  ";
         }
     }
     public function search($input)
@@ -28,7 +28,7 @@ class Model
     public function forget_password($password, $token)
     {
         $update = "UPDATE `Register_tb` SET password= '$password', reset_date =NULL  WHERE reset_token= '$token'";
-        if (mysqli_query($this->conn,  $update)) {
+        if (mysqli_query($this->conn, $update)) {
             $_SESSION['user'] = "Password Updated Successfully";
             header('location:../mailman/index.php');
         } else {
