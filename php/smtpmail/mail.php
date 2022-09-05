@@ -37,7 +37,7 @@ function sendMail($remail, $reset_token)
 
         $mail->isHTML(true);
         $mail->Subject = 'Password Reset ';
-        $mail->Body    = "This is the HTML message body <b><a href='http://localhost/Mailman/mailman/forget_Password.php?reset_token=$reset_token'> Reset password</a></b>";
+        $mail->Body    = "This is the HTML message body <b><a href='http://tse.hestalabs.com/Mailman/mailman/forget_Password.php?reset_token=$reset_token'> Reset password</a></b>";
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();
