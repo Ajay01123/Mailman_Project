@@ -112,7 +112,8 @@ foreach ($obj->data as $row) {
                             </div>
                             <div class="modal-body">
 
-                                <form action="../php/composer.php" method="POST" enctype="multipart/form-data">
+                                <form action="../php/composer.php" method="POST" enctype="multipart/form-data"
+                                    onsubmit="return validation()">
                                     <input type="text" class="form-control" placeholder="TO" name="to"><br>
                                     <input type="text" class="form-control" placeholder="CC" name="cc"><br>
                                     <input type="text" class="form-control" placeholder="BCC" name="bcc"><br>
@@ -303,8 +304,21 @@ foreach ($obj->data as $row) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../Js/trash.js"></script>
     <script>
+    function validation() {
 
+        var image = document.getElementById('image');
+
+        var size = parseFloat(image.files[0].size / (1024 * 25)).toFixed(2);
+        if (size > 25) {
+            document.getElementById("Img").innerHTML = "please select less then 25MB size";
+            return false;
+
+
+        } else {
+            document.getElementById("Img").innerHTML = "";
+            return true;
+        }
+    }
     </script>
-</body>
 
 </html>

@@ -2,17 +2,20 @@
 if (!isset($_SESSION)) {
   session_start();
 }
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 if (isset($_GET['reset_token'])) {
-  include '../php/username.php';
-  $con = mysqli_connect("localhost", "root", "hestabit", "mailman");
+
+  $con = new mysqli("localhost", "root", "hestabit", "mailman");
+
   $token = $_GET['reset_token'];
 
   if (isset($_POST['update'])) {
     $password = $_POST['password'];
     $password = md5($password);
     $update = "UPDATE `Register_tb` SET password= '$password', reset_date =NULL  WHERE reset_token= '$token'";
-    //die('ksss');
+
     if (mysqli_query($con, $update)) {
       $_SESSION['user'] = "Password Updated Successfully";
       header('location:../mailman/index.php');
@@ -41,7 +44,7 @@ if (isset($_GET['reset_token'])) {
     <div class="container-fluid">
         <div class="row mt-5">
 
-            <div class="col-sm-4"></div>
+            <div class="col-sm-2"></div>
             <div class="col-sm-4 mt-5" style="border:2px solid red ;"><br>
 
                 <!-- <div class="col-sm-4">

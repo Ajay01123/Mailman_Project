@@ -151,7 +151,7 @@ if ($_SESSION['email'] == "") {
                                     <textarea class="form-control" rows="5" cols="3" placeholder="Message"
                                         name="msg"></textarea><br>
                                     <input type="file" class="form-control" name="Image[]" id="image" multiple>
-                                    <span class="text-danger" id="Img"></span><br>
+                                    <span class="text-danger" id="Img"></span>
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal" name="close"
@@ -264,25 +264,27 @@ if ($_SESSION['email'] == "") {
             <div class="col-sm-12" style="min-height:88px; background:black"></div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <input type="email" class="form-control" name="to" value="<?php echo $row['From']; ?>"> <br>
-                        <textarea class="form-control" rows="5" cols="3" placeholder="Message"
-                            name="msg"></textarea><br>
-                        <input type="file" class="form-control" name="Image[]" id="image" multiple>
-                        <span class="text-danger" id="Img"></span><br>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send</button>
+    <div class="row">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <input type="email" class="form-control" name="to" value="<?php echo $row['From']; ?>"> <br>
+                            <textarea class="form-control" rows="5" cols="3" placeholder="Message"
+                                name="msg"></textarea><br>
+                            <input type="file" class="form-control" name="Image[]" id="image" multiple>
+                            <span class="text-danger" id="Img"></span><br>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Send</button>
+                    </div>
                 </div>
             </div>
         </div>

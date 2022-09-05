@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "hestabit", "mailman");
+$connect =  new mysqli("localhost", "root", "hestabit", "mailman");
 $id = $_POST["id"];
 $query = "SELECT * FROM Send_Msg where Id = '" . $id . "' ";
 $result = mysqli_query($connect, $query);

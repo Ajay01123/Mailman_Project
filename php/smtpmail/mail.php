@@ -46,7 +46,7 @@ function sendMail($remail, $reset_token)
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
-$con = mysqli_connect("localhost", "root", "hestabit", "mailman");
+$con = new  mysqli("localhost", "root", "hestabit", "mailman");
 
 if (isset($_POST['send'])) {
     $remail = $_POST['remail'];
