@@ -1,2 +1,2 @@
 <?php
-$conn = new mysqli("localhost", "root", "hestabit", "mailman");
+$conn = new mysqli("localhost", "tse", "0wi&lbRuPuv", "Ajay");

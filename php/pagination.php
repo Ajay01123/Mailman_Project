@@ -1,5 +1,2 @@
 <?php
-$con = mysqli_connect("localhost", "root", "hestabit", "mailman");
-
-
-?>
+$con = mysqli_connect("localhost", "tse", "0wi&lbRuPuv", "Ajay");
