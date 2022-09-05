@@ -134,7 +134,7 @@ class Register
   }
   public function forget_password($password, $token)
   {
-    $update = "UPDATE Register_tb SET passwor`= '$password', reset_date =NULL  WHERE reset_token= '$token'";
+    $update = "UPDATE Register_tb SET `password`= '$password', reset_date =NULL  WHERE reset_token= '$token'";
 
     $query = mysqli_query($this->conn, $update);
     if ($query) {
