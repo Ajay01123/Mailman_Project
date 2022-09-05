@@ -16,7 +16,7 @@ $('.Item').change(function () {
 
     } else {
         $(this).prop('checked', false);
-        $('btn').prop('disabled', true);
+        $('#btn').prop('disabled', true);
     }
 })
 

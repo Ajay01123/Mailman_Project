@@ -1,14 +1,14 @@
 <?php
 
 if (!isset($_SESSION)) {
-  session_start();
+    session_start();
 }
 include '../php/login.php ';
 //print_r ($_SESSION['email']);
 
 include '../php/database.php';
 if ($_SESSION['email'] != "") {
-  header("Location:../mailman/dashboard.php");
+    header("Location:../mailman/dashboard.php");
 }
 ?>
 
@@ -31,41 +31,41 @@ if ($_SESSION['email'] != "") {
     <div class="container">
         <div class="row mt-5 " style="border:2px solid red;">
             <?php
-      if (isset($_SESSION['status'])) {
-      ?>
+            if (isset($_SESSION['status'])) {
+            ?>
             <div class="alert alert-primary alert-dismissible fade show" id="flash-msg" role="alert">
                 <strong>Send</strong> <?php echo $_SESSION['status']  ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
             <?php
-        unset($_SESSION['status']);
-      }
-      ?>
+                unset($_SESSION['status']);
+            }
+            ?>
             <?php
-      if (isset($_SESSION['name'])) {
-      ?>
+            if (isset($_SESSION['name'])) {
+            ?>
             <div class="alert alert-danger alert-dismissible fade show" id="flash-msg" role="alert">
                 <strong>ERROR!</strong> <?php echo $_SESSION['name']; ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
             <?php
-        unset($_SESSION['name']);
-      }
-      ?>
+                unset($_SESSION['name']);
+            }
+            ?>
             <?php
-      if (isset($_SESSION['user'])) {
-      ?>
+            if (isset($_SESSION['user'])) {
+            ?>
             <div class="alert alert-secondary alert-dismissible fade show" id="flash-msg" role="alert">
                 <strong>Success</strong> <?php echo $_SESSION['user']; ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
             <?php
-        unset($_SESSION['user']);
-      }
-      ?>
+                unset($_SESSION['user']);
+            }
+            ?>
 
 
             <div class="col-sm-5 my-4">
@@ -75,9 +75,10 @@ if ($_SESSION['email'] != "") {
                 <h1>Login to your account</h1>
                 <form action="../php/login.php" method="post" onsubmit="return validation()">
                     <br><br>
-                    <input type="text" class="form-control" placeholder="Email" name="email" id="email" value="<?php if (isset($email)) {
-                                                                                                        echo $email;
-                                                                                                      } ?>">
+                    <input type="text" class="form-control" placeholder="Email/Username" name="email" id="email"
+                        value="<?php if (isset($email)) {
+                                                                                                                            echo $email;
+                                                                                                                        } ?>">
 
                     <span class="text-danger" id="semail"></span><br><br>
                     <input type="password" class="form-control" placeholder="Password" name="password" id="password">
@@ -106,7 +107,7 @@ if ($_SESSION['email'] != "") {
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script>
     $(document).ready(function() {
-        $("#flash-msg").delay(1000).fadeOut("slow");
+        $("#flash-msg").delay(3000).fadeOut("slow");
     });
     </script>
 

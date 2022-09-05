@@ -34,6 +34,7 @@ if ($_SESSION['email'] == "") {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" rel="stylesheet">
+
     <title>dashboard</title>
 </head>
 
@@ -55,13 +56,25 @@ if ($_SESSION['email'] == "") {
             <?php
             if (isset($_SESSION['status'])) {
             ?>
-            <div class="alert alert-danger alert-dismissible fade show" id="flash-msg" role="alert">
+            <div class="alert alert-success alert-dismissible fade show" id="flash-msg" role="alert">
                 <strong></strong><?php echo $_SESSION['status']; ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
             <?php
                 unset($_SESSION['status']);
+            }
+            ?>
+            <?php
+            if (isset($_SESSION['msg'])) {
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show" id="flash-msg" role="alert">
+                <strong></strong><?php echo $_SESSION['msg']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <?php
+                unset($_SESSION['msg']);
             }
             ?>
             <?php
@@ -114,7 +127,7 @@ if ($_SESSION['email'] == "") {
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-secondary mt-5" data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop" class="mt-3">
-                    + Compose
+                    <span class="text"><i class="fa fa-pen"></i> Compose </span>
                 </button>
 
                 <!-- Modal -->
@@ -152,11 +165,13 @@ if ($_SESSION['email'] == "") {
                 <br>
                 <br>
                 <nav class="nav flex-column ">
-                    <a class="nav-link active" aria-current="page" href="#">Inbox</a>
+                    <a class="nav-link active" aria-current="page" href="#">
+                        <i class="fa-solid fa-inbox"></i> Inbox</a>
 
-                    <a class="nav-link" href="../mailman/sent.php">Sent</a>
-                    <a class="nav-link" href="../mailman/draft.php">Draft</a>
-                    <a class="nav-link" href="../mailman/trash.php">Trash</a>
+                    <a class="nav-link" href="../mailman/sent.php">
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i> Sent</a>
+                    <a class="nav-link" href="../mailman/draft.php"><i class="fa-regular fa-file"></i> Draft</a>
+                    <a class="nav-link" href="../mailman/trash.php"><i class="fa-solid fa-trash"></i> Trash</a>
 
                 </nav>
 
@@ -177,8 +192,9 @@ if ($_SESSION['email'] == "") {
                                     <th>
                                         <button type="submit" form="my-form" name="update" class="btn btn-danger"
                                             id="btn" disabled="true">Delete</button>
-                                        <button type="button" id="read" class="btn btn-info">Read</button>
-                                        <button type="button" class="btn btn-info">Unread</button>
+                                        <button type="button" id="read" class="btn btn-info" name="Read"
+                                            disabled="true">Read</button>
+
                                     </th>
                                 </tr>
                             </thead>
@@ -219,7 +235,7 @@ if ($_SESSION['email'] == "") {
                 <?php
                 include '../php/dbconnect.php';
                 $page =  $_GET['page'];
-                $start_per = 20;
+                $start_per = 15;
                 $sql = " SELECT * FROM Send_Msg where  Inbox_detete= 1  ";
                 $result = mysqli_query($conn, $sql);
                 $total = mysqli_num_rows($result);
@@ -248,12 +264,35 @@ if ($_SESSION['email'] == "") {
             <div class="col-sm-12" style="min-height:88px; background:black"></div>
         </div>
     </div>
-
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="email" class="form-control" name="to" value="<?php echo $row['From']; ?>"> <br>
+                        <textarea class="form-control" rows="5" cols="3" placeholder="Message"
+                            name="msg"></textarea><br>
+                        <input type="file" class="form-control" name="Image[]" id="image" multiple>
+                        <span class="text-danger" id="Img"></span><br>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../Js/dashboard.js"></script>
+
     <script>
     function validation() {
 
@@ -271,7 +310,6 @@ if ($_SESSION['email'] == "") {
         }
     }
     </script>
-
 
 </body>
 

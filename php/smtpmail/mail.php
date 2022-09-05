@@ -67,7 +67,7 @@ if (isset($_POST['send'])) {
             if (mysqli_query($con, $query) && sendMail($remail, $reset_token)) {
 
                 $_SESSION['status'] = " Please check your email";
-                header("Location:../../mailman/Sign-in.php");
+                header("Location:../../mailman/index.php");
             }
         } else {
             $_SESSION['name'] = " Please correct email id";

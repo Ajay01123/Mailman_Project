@@ -41,12 +41,12 @@ if (isset($_GET['reset_token'])) {
     <div class="container-fluid">
         <div class="row mt-5">
 
-            <div class="col-sm-2"></div>
+            <div class="col-sm-4"></div>
             <div class="col-sm-4 mt-5" style="border:2px solid red ;"><br>
 
-                <div class="col-sm-4">
+                <!-- <div class="col-sm-4">
                     <img src="../images/password.png" width="100%">
-                </div>
+                </div> -->
                 <br>
                 <form action="#" method="POST" onsubmit="return validation()">
                     <input type="password" class="form-control" placeholder="New Password" name="password" id="pass">

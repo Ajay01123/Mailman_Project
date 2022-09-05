@@ -12,7 +12,8 @@ if (isset($_POST['submit'])) {
   $cc = $_POST['cc'];
   $bcc = $_POST['bcc'];
   $sub = $_POST['sub'];
-  $msg =  nl2br($_POST['msg']);
+  $msg =  $_POST['msg'];
+  $msg = addslashes($msg);
   $draft = $_POST['draft'];
   $date = date('Y-m-d H:i:s');
   $from = $_SESSION['email'];

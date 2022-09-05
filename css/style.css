@@ -53,9 +53,7 @@
     cursor: copy;
 }
 
-.btn input :disabled {
-    cursor: disabled;
-}
+
 
 a:hover {
     background-color: whitesmoke;
@@ -64,4 +62,18 @@ a:hover {
 
 .active {
     background: wheat;
+}
+
+.nav-link {
+    font-size: 23px;
+    font-weight: 400;
+    color: aquamarine;
+}
+
+.text {
+    font-size: 20px;
+}
+
+.nav a i {
+    color: black;
 }

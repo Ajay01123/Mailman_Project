@@ -21,6 +21,28 @@ $(".checkItem").change(function () {
         $('#btn').prop('disabled', true);
     }
 })
+$(document).ready(function () {
+    $("#checkall").change(function () {
+        if ($(this).is(":checked")) {
+            $('.checkItem').prop('checked', true);
+
+        } else {
+            $('.checkItem').prop('checked', false);
+
+        }
+    })
+})
+
+$(".checkItem").change(function () {
+    if ($(this).is(":checked")) {
+        $(this).prop('checked', true);
+        $('#read').prop('disabled', false);
+    } else {
+        $(this).prop('checked', false);
+        $('#unread').prop('disabled', false);
+    }
+})
+
 
 $('document').ready(function () {
     $("#search").keyup(function () {
@@ -66,7 +88,7 @@ $("#table td").click(function () {
             $.each(image, function (indexInArray, valueOfElement) {
                 if (valueOfElement != null) {
                     images += '<div><a href="../Upload1/' + valueOfElement +
-                        '" download>' + valueOfElement + '</a></div>'
+                        '" download>' + valueOfElement + '</a> download</div>'
                 }
             });
 
@@ -92,15 +114,15 @@ $("#table td").click(function () {
 
                 '</ul>' +
                 '</div>' +
+                '<br>' +
                 '<div style="border:1px solid black; min-height:200px;">' +
                 response.Msg +
                 '</div>' +
-
-                images
-
-
-
-
+                '<br>' +
+                images + '<div class="d-grid gap-2 d-md-flex justify-content-md-end">' +
+                '<button type="submit" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Reply'
+            '</button>' +
+                '</div>';
             $('#inbox').html(html);
         }
     });

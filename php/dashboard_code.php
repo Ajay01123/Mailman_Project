@@ -47,7 +47,7 @@ class Model
     $result = mysqli_query($this->conn, $query);
     if ($result) {
 
-      $_SESSION['status'] = "Message close";
+      $_SESSION['msg'] = "Message close";
 
       header('location:../mailman/dashboard.php');
     } else {
@@ -62,8 +62,8 @@ class Model
     } else {
       $page = 1;
     }
-    $start_per = 8;
-    $start_from = ($page - 1) * 8;
+    $start_per = 5;
+    $start_from = ($page - 1) * 5;
     $from = $_SESSION['email'];
     $query = "SELECT * FROM Send_Msg  where Send_delete = 1 AND `From` = '$from' ORDER BY Id DESC LIMIT $start_from, $start_per  ";
     $result = mysqli_query($this->conn, $query);
@@ -99,8 +99,8 @@ class Model
     } else {
       $page = 1;
     }
-    $start_per = 8;
-    $start_from = ($page - 1) * 8;
+    $start_per = 4;
+    $start_from = ($page - 1) * 4;
     $from = $_SESSION['email'];
 
     $sql = "SELECT * FROM Send_Msg where `To`= '$from' AND`Inbox_detete`= 0  ORDER BY Id DESC LIMIT $start_from, $start_per ";
@@ -109,15 +109,29 @@ class Model
   }
   public function send()
   {
+    if (isset($_GET['page'])) {
+      $page = $_GET['page'];
+    } else {
+      $page = 1;
+    }
+    $start_per = 4;
+    $start_from = ($page - 1) * 4;
     $from = $_SESSION['email'];
-    $sql = "SELECT * FROM Send_Msg where  `From`='$from' AND `Send_delete` = 0 ";
+    $sql = "SELECT * FROM Send_Msg where  `From`='$from' AND `Send_delete` = 0 ORDER BY Id DESC LIMIT $start_from, $start_per ";
     $result = mysqli_query($this->conn, $sql);
     return $result;
   }
   public function draft_trash()
   {
+    if (isset($_GET['page'])) {
+      $page = $_GET['page'];
+    } else {
+      $page = 1;
+    }
+    $start_per = 4;
+    $start_from = ($page - 1) * 4;
     $from = $_SESSION['email'];
-    $sql = "SELECT * FROM Send_Msg where  `From`='$from' AND `Draft` = 3 ";
+    $sql = "SELECT * FROM Send_Msg where  `From`='$from' AND `Draft` = 3 ORDER BY Id DESC LIMIT $start_from, $start_per ";
     $result = mysqli_query($this->conn, $sql);
     return $result;
   }
@@ -128,8 +142,8 @@ class Model
     } else {
       $page = 1;
     }
-    $start_per = 9;
-    $start_from = ($page - 1) * 9;
+    $start_per = 5;
+    $start_from = ($page - 1) * 5;
     $from = $_SESSION['email'];
 
     $query = "SELECT * FROM Send_Msg where  `To` = '$from' AND `Inbox_detete`= 1  ORDER BY Id DESC LIMIT $start_from, $start_per ";

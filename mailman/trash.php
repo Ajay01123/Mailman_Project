@@ -97,7 +97,7 @@ foreach ($obj->data as $row) {
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-secondary mt-5" data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop" class="mt-3">
-                    + Compose
+                    <span class="text"><i class="fa fa-pen"> </i> Compose </span>
                 </button>
 
                 <!-- Modal -->
@@ -133,11 +133,13 @@ foreach ($obj->data as $row) {
                 <br>
                 <br>
                 <nav class="nav flex-column">
-                    <a class="nav-link active" aria-current="page" href="../mailman/dashboard.php">Inbox</a>
+                    <a class="nav-link active" aria-current="page" href="../mailman/dashboard.php"> <i
+                            class="fa-solid fa-inbox"></i> Inbox</a>
 
-                    <a class="nav-link" href="../mailman/sent.php">Sent</a>
-                    <a class="nav-link" href="../mailman/draft.php">Draft</a>
-                    <a class="nav-link" href="../mailman/trash.php">Trash</a>
+                    <a class="nav-link" href="../mailman/sent.php"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        Sent</a>
+                    <a class="nav-link" href="../mailman/draft.php"><i class="fa-regular fa-file"></i> Draft</a>
+                    <a class="nav-link" href="../mailman/trash.php"><i class="fa-solid fa-trash"></i> Trash</a>
                 </nav>
             </div>
             <div class="col-sm-10" id="inbox">
@@ -267,7 +269,7 @@ foreach ($obj->data as $row) {
                     $page =  $_GET['page'];
 
                     $start_per = 20;
-                    $query = " SELECT * FROM Send_Msg where Trash_delete in (0,1) ";
+                    $query = " SELECT * FROM Send_Msg where Trash_delete =1  ";
                     $result = mysqli_query($conn, $query);
                     $total = mysqli_num_rows($result);
                     $total_page = ceil($total / $start_per);

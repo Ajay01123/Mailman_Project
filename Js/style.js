@@ -11,7 +11,7 @@ function validation() {
     var password = document.getElementById("password").value;
 
     var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-    var space = /^\S+$/;
+    var email_pattern = /^[\w.+\-]+@gmail\.com$/
 
     var email_status;
     var password_status;
@@ -23,6 +23,7 @@ function validation() {
         document.getElementById("semail").innerHTML = "Please remove space";
         email_status = false;
     }
+
     else {
         document.getElementById("semail").innerHTML = "";
 
