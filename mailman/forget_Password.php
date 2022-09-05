@@ -1,7 +1,7 @@
 <?php
-if (!isset($_SESSION)) {
-  session_start();
-}
+// if (!isset($_SESSION)) {
+//   session_start();
+// }
 $obj->forget_password($password, $token);
 if (isset($_GET['reset_token'])) {
   $token = $_GET['reset_token'];
