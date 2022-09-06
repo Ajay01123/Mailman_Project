@@ -17,7 +17,6 @@ if (isset($_POST['input'])) {
                     <input type="checkbox" class="checkItem" name="delete_data[]" value="<?php echo $row['Id']; ?>">
                 </td>
                 <td><?php echo $row['To']; ?>
-
             </tr>
             <?php
                 }
