@@ -18,10 +18,8 @@ if (isset($_POST['input'])) {
                 </td>
                 <td><?php echo $row['To']; ?>
 
-                <td><?php echo $row['Cc']; ?>
-                <td><?php echo $row['Bcc']; ?>
-                <td><?php echo $row['Subject']; ?>
-                <td><?php echo $row['Msg']; ?>
+
+
                 <td><?php echo $row['DateTime']; ?>
             </tr>
             <?php
