@@ -18,7 +18,7 @@ class Model
     public function search($input)
     {
         $from = $_SESSION['email'];
-        $sql = "SELECT * FROM Send_Msg Where `Inbox_detete`=1 ,`From`='$from' AND `From` LIKE '{ $input}%'  OR  Cc LIKE '{$input}%' OR Msg LIKE '{$input}%' ";
+        $sql = "SELECT * FROM Send_Msg Where `From`='$from' AND `To` LIKE '{ $input}%'  OR  Cc LIKE '{$input}%' OR Msg LIKE '{$input}%' ";
         $query = mysqli_query($this->conn, $sql);
         if (mysqli_num_rows($query) > 0) {
         } else {
