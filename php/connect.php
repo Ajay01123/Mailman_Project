@@ -17,6 +17,7 @@ class Model
     }
     public function search($input)
     {
+
         $sql = "SELECT * FROM Send_Msg Where `To` LIKE '{$input}%' or  Cc LIKE '{$input}%' OR Msg LIKE '{$input}%' ";
         $query = mysqli_query($this->conn, $sql);
         if (mysqli_num_rows($query) > 0) {
