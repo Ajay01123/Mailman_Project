@@ -130,15 +130,6 @@ class Register
       return false;
     }
   }
-
-
-
-  public function username($username)
-  {
-    $query = "SELECT * FROM Register_tb where username='" . $username . "' ";
-    $result = mysqli_query($this->conn, $query);
-    echo mysqli_num_rows($result);
-  }
 }
 
 
