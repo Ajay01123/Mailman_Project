@@ -123,20 +123,7 @@ function validation() {
         status_pass = false;
 
     }
-    // else if (pass.search(/[a-z]/) == -1) {
-    //     spanpass.innerHTML = "Must contain a lower case character  ";
-    //     status_pass = false;
 
-    // } else if (pass.search(/[0-9]/) == -1) {
-    //     spanpass.innerHTML = "Must contain a number  ";
-    //     status_pass = false;
-
-    // }
-    // else if (pass.search(/[!"`'#%&,:;<>=@{}~\$\(\)\*\+\/\\\?\[\]\^\|]+/) == -1) {
-    //     spanpass.innerHTML = "Must contain a special character  ";
-    //     status_pass = false;
-
-    // }
 
     else {
         spanpass.innerHTML = "";
@@ -157,11 +144,7 @@ function validation() {
         document.getElementById('cpassword').innerHTML = 'not matching';
         status_cpass = false;
     }
-
-
     if (!allowedExtenstion.exec(filePath)) {
-
-
         status_image = true;
         fileimage.value = "";
 
