@@ -11,8 +11,8 @@ function validation() {
         spanpass.innerHTML = "**Password length must be atleast 6 characters";
         status_pass = false;
     }
-    else if (pass.search(/^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/)) {
-        spanpass.innerHTML = "one upper case and lower case and digit ";
+    else if (pass.search(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)) {
+        spanpass.innerHTML = "one upper case and lower case and digit and symbol";
         status_pass = false;
 
     }

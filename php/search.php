@@ -6,7 +6,7 @@ if (isset($_POST['input'])) {
 
 ?>
 <div class="table-responsive" id="no-more-tables">
-    <form action="../php/inbox_delete.php" method="POST" id="my-form">
+    <form action="../php/inbox_delete.php" method="POST">
         <table class="table bg-white">
             <?php
                 while ($row = mysqli_fetch_assoc($record)) {
