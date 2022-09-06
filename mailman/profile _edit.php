@@ -75,8 +75,6 @@
                              <div class="input">
 
                              </div>
-
-
                              <div class="col-md-10 ">
                                  <div class="row">
                                      <div class="col-md-8">
@@ -88,18 +86,13 @@
                                          <span class="text-danger" id="lastname"></span><br>
 
                                          <div>
-
                                              <input type="email" class="form-control" name="remail"
                                                  placeholder="Enter your Email" id="remail"
                                                  value="<?php echo $getdata['recovery_email']; ?>">
                                              <!-- <span <?php echo $msg ?>></span> -->
                                          </div>
                                          <span class="text-danger" id="useremail"></span><br>
-
                                      </div>
-
-
-
                                  </div>
                                  <div class="row ">
                                      <div class="col-md-8">

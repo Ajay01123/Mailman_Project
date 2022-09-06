@@ -89,12 +89,6 @@ foreach ($obj->data as $row) {
 
                     <form action="#" method="POST" enctype="multipart/form-data" onsubmit="return validation()">
                         <div class="row ">
-                            <?php
-
-
-
-                            ?>
-
                             <div class="col-md-2 order-md-last mb-3" id="preview">
                                 <!-- <img src="../images/index.png" id="default-preview" class="text-center"style="width: 150px;"   > -->
                                 <img src="<?php echo '../Register_image/' . $row->image; ?>" width="150" height="150"
