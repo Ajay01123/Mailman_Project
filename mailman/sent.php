@@ -174,8 +174,6 @@ foreach ($obj->data as $row) {
 
                                     </tr>
                                 </thead>
-
-
                                 <?php
                                 while ($row = mysqli_fetch_array($record)) {
 
@@ -185,16 +183,11 @@ foreach ($obj->data as $row) {
                                         <input type="checkbox" class="Item" name="delete_data[]"
                                             value="<?php echo $row['Id']; ?>" />
                                     </td>
-
-
-
                                     <div>
                                         <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
                                         <td class="<?php echo $row['Id']; ?>"><?php echo $row['Subject']; ?></td>
                                         <td class="<?php echo $row['Id']; ?>"><?php echo $row['DateTime']; ?></td>
                                     </div>
-
-
                                 </tr>
                                 <?php
                                 }
@@ -245,15 +238,11 @@ foreach ($obj->data as $row) {
     <script src="../Js/send.js"></script>
     <script>
     function validation() {
-
         var image = document.getElementById('image');
-
         var size = parseFloat(image.files[0].size / (1024 * 25)).toFixed(2);
         if (size > 25) {
             document.getElementById("Img").innerHTML = "please select less then 25MB size";
             return false;
-
-
         } else {
             document.getElementById("Img").innerHTML = "";
             return true;
