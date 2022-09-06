@@ -211,7 +211,7 @@ foreach ($obj->data as $row) {
                 include '../php/dbconnect.php';
                 $page =  $_GET['page'];
                 $start_per = 20;
-                $query = " SELECT * FROM Send_Msg where  Draft=0 ";
+                $query = " SELECT * FROM Send_Msg where  Draft=2 ";
                 $result = mysqli_query($conn, $query);
                 $total = mysqli_num_rows($result);
 

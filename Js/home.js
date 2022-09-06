@@ -121,16 +121,11 @@ function validation() {
     else if (pass.search(pattern) == -1) {
         spanpass.innerHTML = "one upper case and lower case and digit and special character";
         status_pass = false;
-
     }
-
-
     else {
         spanpass.innerHTML = "";
         status_pass = true;
-
     }
-
     if (cpass == "") {
         spancpass.innerHTML = "** Please fill confirm password";
         status_cpass = false;
