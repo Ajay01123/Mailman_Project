@@ -211,7 +211,7 @@ foreach ($obj->data as $row) {
                 include '../php/dbconnect.php';
                 $page =  $_GET['page'];
 
-                $start_per = 10;
+                $start_per = 15;
                 $query = " SELECT * FROM Send_Msg  where Send_delete = 1";
 
                 $result = mysqli_query($conn, $query);

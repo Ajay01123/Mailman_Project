@@ -25,7 +25,8 @@ class Model
 
   {
     $m = serialize($file);
-    $query = "INSERT INTO Send_Msg(`To`,Cc,`Bcc`,`Subject`,`Msg`,`From`,`Draft`,`Multiple`,`Draft_delete`,`Inbox_detete`,`Send_delete`,`Read`,`Datetime`)VALUES('$to','$cc','$bcc','$sub','$msg','$from','$draft','$m','$draft_delete','$inbox_delete','$send_delete','$read','$date')";
+    $query = "INSERT INTO Send_Msg(`To`,Cc,`Bcc`,`Subject`,`Msg`,`From`,`Draft`,`Multiple`,`Draft_delete`,`Inbox_detete`,`Send_delete`,`Read`,`Datetime`)
+    VALUES('$to','$cc','$bcc','$sub','$msg','$from','$draft','$m','$draft_delete','$inbox_delete','$send_delete','$read','$date')";
 
     $result = mysqli_query($this->conn, $query);
     if ($result) {
@@ -42,7 +43,8 @@ class Model
   {
 
     $m = serialize($file);;
-    $query = "INSERT INTO Send_Msg(`To`,`Cc`,`Bcc`,`Subject`,`Msg`,`From`,`Draft`,`Multiple`,`Draft_delete`,`Inbox_detete`,`Send_delete`,`Datetime`)VALUES('$to','$cc','$bcc','$sub','$msg','$from','$draft','$m','$draft_delete','$inbox_delete','$send_delete','$date')";
+    $query = "INSERT INTO Send_Msg(`To`,`Cc`,`Bcc`,`Subject`,`Msg`,`From`,`Draft`,`Multiple`,`Draft_delete`,`Inbox_detete`,`Send_delete`,`Datetime`)
+    VALUES('$to','$cc','$bcc','$sub','$msg','$from','$draft','$m','$draft_delete','$inbox_delete','$send_delete','$date')";
 
     $result = mysqli_query($this->conn, $query);
     if ($result) {
