@@ -10,6 +10,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 }
 
 include '../php/database.php';
+
 if (isset($_POST['update'])) {
     $old_password = $_POST['password'];
     $old_password = md5($old_password);
@@ -67,21 +68,15 @@ if (isset($_POST['update'])) {
                     <input type="hidden" name="remail" />
                 </form>
             </div>
-
-
-
         </div>
     </div>
-
     <script src="../Js/change_password.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-
-
 </body>
 
 </html>
 <?php
-// }
+//}
 ?>

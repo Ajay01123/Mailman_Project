@@ -6,7 +6,6 @@ include '../php/database.php';
 if (!isset($_SERVER['HTTP_REFERER'])) {
 
     header("Location:../mailman/index.php");
-
     exit;
 }
 
@@ -42,14 +41,11 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             <div class="col-sm-5 mt-5 p-4 " style="border:2px solid red ;">
                 <h1 class="display-7 p-5"> Recovery Email</h1>
                 <form action="../php/smtpmail/mail.php" method="post" onsubmit="return validation()">
-
                     <input type="email" class="form-control" name="remail" id="remail" placeholder="recovery email">
                     <span class="text-danger" id="spanremail"></span><br>
                     <button type="submit" class="btn btn-primary" name="send">Send</button>
-
                 </form>
             </div>
-
         </div>
     </div>
     </div>

@@ -7,9 +7,6 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 include '../php/dashboard_code.php';
 include '../php/login.php';
 $record = $db->getdata();
-
-// print_r($record);
-// die;
 $em = $_SESSION['email'];
 $mp = $_SESSION['username'];
 $query = "SELECT * FROM Register_tb where  username='$em'||email='$em'";
