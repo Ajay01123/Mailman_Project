@@ -1,25 +1,25 @@
  <?php
-  if (!isset($_SERVER['HTTP_REFERER'])) {
+    if (!isset($_SERVER['HTTP_REFERER'])) {
 
-    header("Location:../mailman/dashboard.php");
+        header("Location:../mailman/dashboard.php");
 
-    exit;
-  }
-  include_once '../php/database.php';
-  if ($_GET['id']) {
-    $getdata = $obj->update($_GET['id']);
-  }
-  if (isset($_POST['update'])) {
-    $updates = $obj->updatedata($_GET['id']);
-    if ($updates) {
-      $_SESSION['status'] = "Data Updated Successfully";
-    } else {
-      echo "Data not updated ";
+        exit;
     }
-  }
+    include_once '../php/database.php';
+    if ($_GET['id']) {
+        $getdata = $obj->update($_GET['id']);
+    }
+    if (isset($_POST['update'])) {
+        $updates = $obj->updatedata($_GET['id']);
+        if ($updates) {
+            $_SESSION['status'] = "Data Updated Successfully";
+        } else {
+            echo "Data not updated ";
+        }
+    }
 
 
-  ?>
+    ?>
 
  <html>
 
@@ -34,14 +34,7 @@
 
 
      <title>Profile_edit</title>
-     <style>
-     /* .input{
-        margin-left:60%;
-        
-  
-       
-      } */
-     </style>
+
  </head>
 
  <body>
@@ -53,17 +46,17 @@
                  <span> </span>
                  <div class="col-sm-10">
                      <?php
-            if (isset($_SESSION['status'])) {
-            ?>
+                        if (isset($_SESSION['status'])) {
+                        ?>
                      <div class="alert alert-success alert-dismissible fade show" id="flash-msg" role="alert">
                          <strong></strong> <?php echo $_SESSION['status']; ?>
                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                      </div>
 
                      <?php
-              unset($_SESSION['status']);
-            }
-            ?>
+                            unset($_SESSION['status']);
+                        }
+                        ?>
 
                      <form action="#" method="POST" enctype="multipart/form-data" onsubmit="return validation()">
                          <div class="row  ">

@@ -1,15 +1,15 @@
  <?php
-  //session_start();
-  include_once '../php/connection.php';
-  if (!isset($_SERVER['HTTP_REFERER'])) {
+    //session_start();
+    include_once '../php/connection.php';
+    if (!isset($_SERVER['HTTP_REFERER'])) {
 
-    header("Location:../mailman/index.php");
+        header("Location:../mailman/index.php");
 
-    exit;
-  }
+        exit;
+    }
 
 
-  ?>
+    ?>
 
  <html>
 
@@ -33,7 +33,7 @@
              <?php
 
 
-        ?>
+                ?>
              <div class="col-sm-12" style="background:white; border:2px solid red;">
 
                  <h1>Mailman</h1>
@@ -54,10 +54,7 @@
 
                              </div>
                              <div class="input">
-
                              </div>
-
-
                              <div class="col-md-10 ">
                                  <div class="row">
                                      <div class="col-md-8">
