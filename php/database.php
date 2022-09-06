@@ -31,16 +31,10 @@ class Register
   }
   public function login($username, $email, $password)
   {
-
     $password = md5($password);
-
-
     $query = "SELECT * FROM Register_tb WHERE (email = '$email' or username ='$email')and `password`='$password'";
     $result = mysqli_query($this->conn, $query);
-
-
     if (mysqli_num_rows($result) > 0) {
-
       $row = mysqli_fetch_array($result);
       $_SESSION['status'] = "Login Successfully";
       $_SESSION['email'] = ($row['email']);
@@ -48,9 +42,7 @@ class Register
       $password = ($row['password']);
       header('location:../mailman/dashboard.php');
     } else {
-
       $_SESSION['name'] = "Username or password not matched";
-
       header("Location:../mailman/index.php");
     }
   }
