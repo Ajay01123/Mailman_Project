@@ -2,6 +2,7 @@
 include '../php/connect.php';
 if (isset($_POST['input'])) {
     $input = $_POST['input'];
+
     $record = $db->search($input);
 
 ?>
