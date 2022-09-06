@@ -2,6 +2,12 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+if (!isset($_SERVER['HTTP_REFERER'])) {
+
+    header("Location:../mailman/dashboard.php");
+
+    exit;
+}
 
 include '../php/database.php';
 if (isset($_POST['update'])) {
