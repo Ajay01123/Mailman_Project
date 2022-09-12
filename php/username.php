@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 //var_dump($_SERVER['HTTP_ORIGIN']);
 
 
-$connect = new  mysqli("localhost", "root", "hestabit", "mailman");
+$connect = new  mysqli("localhost",  "tes", "0wi&lbRuPuv", "Ajay");
 if (isset($_POST["result"])) {
     $username = mysqli_real_escape_string($connect, $_POST["result"]);
     $query = "SELECT * FROM Register_tb where username='" . $username . "' ";
