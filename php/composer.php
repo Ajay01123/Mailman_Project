@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
     header("Content-Disposition: attachment; filename='" .  $file_name . "'");
     header("Content-length: $size");
     header("Content-type: $type");
-    $file_name = move_uploaded_file($tempname, $folder . "-" . Time());
+    $file_name = move_uploaded_file($tempname, $folder);
   }
 
 

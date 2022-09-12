@@ -53,7 +53,7 @@ function validation() {
         spanlast.innerHTML = " Please fill the last name";
         status_last = false;
     } else if (testWhiteSpace(lname) == true) {
-        spanlast.innerHTML = "Space not a llowd";
+        spanlast.innerHTML = "Please remove space";
         status_last = false;
     }
 
@@ -136,7 +136,7 @@ function validation() {
         status_cpass = true;
     } else {
         document.getElementById('cpassword').style.color = 'red';
-        document.getElementById('cpassword').innerHTML = 'not matching';
+        document.getElementById('cpassword').innerHTML = ' Password not matching';
         status_cpass = false;
     }
     if (!allowedExtenstion.exec(filePath)) {

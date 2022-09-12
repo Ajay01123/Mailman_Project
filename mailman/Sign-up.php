@@ -7,8 +7,11 @@
 
         exit;
     }
+    error_reporting(0);
+    if ($_SESSION['email'] != "") {
 
-
+        header("Location:../mailman/dashboard.php");
+    }
     ?>
 
  <html>

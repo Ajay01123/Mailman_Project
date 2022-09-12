@@ -164,7 +164,7 @@ class Model
 
   public function Draft_delete($id)
   {
-    $sql = "UPDATE Send_Msg SET Send_delete=0 ,Trash_delete=1 WHERE Id=$id";
+    $sql = "UPDATE Send_Msg SET Send_delete= 0 ,Trash_delete=1 WHERE Id=$id";
     $query = mysqli_query($this->conn, $sql);
     if ($query) {
       return true;
