@@ -1,16 +1,20 @@
 <?php
-if (isset($_SESSION)) {
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+//var_dump($_SERVER['HTTP_ORIGIN']);
+
+
+if (!isset($_SESSION)) {
   session_start();
 }
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
+
 class Model
 {
   public $host = 'localhost';
-  public $username = 'tse';
-  public $password = '0wi&lbRuPuv';
-  public $dbname = 'Ajay';
+  public $username = 'root';
+  public $password = 'hestabit';
+  public $dbname = 'mailman';
   public $conn;
 
   public function __construct()
@@ -21,12 +25,12 @@ class Model
       // exit();
     }
   }
-  public function insertRecord($to, $cc, $bcc, $sub, $msg, $from, $draft, $file, $draft_delete, $inbox_delete, $send_delete, $read, $date)
+  public function insertRecord($to, $cc, $bcc, $sub, $msg, $from, $draft, $file, $draft_delete, $inbox_delete, $send_delete, $read, $Bcc_delete, $Cc_delete, $date)
 
   {
     $m = serialize($file);
-    $query = "INSERT INTO Send_Msg(`To`,Cc,`Bcc`,`Subject`,`Msg`,`From`,`Draft`,`Multiple`,`Draft_delete`,`Inbox_detete`,`Send_delete`,`Read`,`Datetime`)
-    VALUES('$to','$cc','$bcc','$sub','$msg','$from','$draft','$m','$draft_delete','$inbox_delete','$send_delete','$read','$date')";
+    $query = "INSERT INTO Send_Msg(`To`,Cc,`Bcc`,`Subject`,`Msg`,`From`,`Draft`,`Multiple`,`Draft_delete`,`Inbox_detete`,`Send_delete`,`Read`,`Bcc_delete`,`Cc_delete`,`Datetime`)
+    VALUES('$to','$cc','$bcc','$sub','$msg','$from','$draft','$m','$draft_delete','$inbox_delete','$send_delete','$read','$Bcc_delete', '$Cc_delete','$date')";
 
     $result = mysqli_query($this->conn, $query);
     if ($result) {
@@ -105,7 +109,7 @@ class Model
     $start_from = ($page - 1) * 4;
     $from = $_SESSION['email'];
 
-    $sql = "SELECT * FROM Send_Msg where `To`= '$from' AND`Inbox_detete`= 0  ORDER BY Id DESC LIMIT $start_from, $start_per ";
+    $sql = "SELECT * FROM Send_Msg where `To`= '$from' AND`Inbox_detete`= 0 or `Cc`= '$from' AND`Cc_delete`=0 or `Bcc`= '$from' AND`Bcc_delete`= 0  ORDER BY Id DESC LIMIT $start_from, $start_per ";
     $result = mysqli_query($this->conn, $sql);
     return $result;
   }
@@ -130,8 +134,8 @@ class Model
     } else {
       $page = 1;
     }
-    $start_per = 4;
-    $start_from = ($page - 1) * 4;
+    $start_per = 10;
+    $start_from = ($page - 1) * 10;
     $from = $_SESSION['email'];
     $sql = "SELECT * FROM Send_Msg where  `From`='$from' AND `Draft` = 3 ORDER BY Id DESC LIMIT $start_from, $start_per ";
     $result = mysqli_query($this->conn, $sql);
@@ -144,11 +148,11 @@ class Model
     } else {
       $page = 1;
     }
-    $start_per = 5;
-    $start_from = ($page - 1) * 5;
+    $start_per = 10;
+    $start_from = ($page - 1) * 10;
     $from = $_SESSION['email'];
 
-    $query = "SELECT * FROM Send_Msg where  `To` = '$from' AND `Inbox_detete`= 1  ORDER BY Id DESC LIMIT $start_from, $start_per ";
+    $query = "SELECT * FROM Send_Msg where  `To` = '$from' AND `Inbox_detete`= 1 or `Cc`='$from' AND Cc_delete = 1 or `Bcc`='$from'ORDER BY Id DESC LIMIT $start_from, $start_per ";
 
     $result = mysqli_query($this->conn, $query);
     $arr = array();
@@ -176,6 +180,17 @@ class Model
     $result = mysqli_query($this->conn, $query);
     $total = mysqli_num_rows($result);
     return $total;
+  }
+  public function reply($to, $msg, $from, $Inbox_detete, $date, $subject, $CC, $Bcc, $Cc_delete, $Bcc_delete, $Send_delete)
+  {
+    $query = "INSERT INTO Send_Msg(`To`, `From`,`Msg`,`Inbox_detete`,`Datetime`,`Subject`,`Cc`,`Bcc`,`Cc_delete`,`Bcc_delete`,`Send_delete`) 
+    VALUES('$to','$from','$msg','$Inbox_detete ','$date','$subject','$CC','$Bcc','$Cc_delete','$Bcc_delete',$Send_delete)";
+    $sql = mysqli_query($this->conn, $query);
+    if ($sql) {
+      //echo "Send Successfully";
+    } else {
+      echo "not";
+    }
   }
 }
 $db = new Model();

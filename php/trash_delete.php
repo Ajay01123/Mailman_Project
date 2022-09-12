@@ -5,7 +5,7 @@ if (!isset($_SESSION)) {
 include '../php/username.php';
 if (isset($_POST['update'])) {
     foreach ($_POST['delete_data'] as $dataId) {
-        echo $sql = "UPDATE Send_Msg SET Inbox_detete  = 1,Send_delete =1,Trash_delete =0 where Id = '$dataId'   ";
+        $sql = "UPDATE Send_Msg SET Inbox_detete  = 1 ,Cc_delete = 1,Bcc_delete = 1, Send_delete =1,Trash_delete =0 where Id = '$dataId'   ";
 
         $total = mysqli_query($connect, $sql);
     }

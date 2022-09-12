@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION)) {
-    session_start();
+    //session_start();
 }
 if (!isset($_SERVER['HTTP_REFERER'])) {
 
@@ -92,7 +92,7 @@ foreach ($obj->data as $row) {
                 <div class="dropdown mt-2 mx-4">
                     <a class=" btn btn-light btn-lg dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <?php echo $_SESSION['email']; ?>
+                        <?php echo $_SESSION['username']; ?>
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -164,51 +164,59 @@ foreach ($obj->data as $row) {
                 </nav>
             </div>
             <div class="col-sm-10" id="inbox">
-                <div class="table-responsive" id="no-more-tables">
-                    <form action="../php/draft_delete.php" method="POST" id="my-form">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">
-                                        <input type="checkbox" id="Item" class="check">
-                                    </th>
+                <br>
+                <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                        <h4> Draft</h4>
+                    </div>
+                    <div class="table-responsive" id="no-more-tables">
+                        <form action="../php/draft_delete.php" method="POST" id="my-form">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            <input type="checkbox" id="Item" class="check">
+                                        </th>
 
-                                    <th scope="col">
-                                        <button type="submit" form="my-form" name="update" id="btn" disabled="true"
-                                            class="btn btn-danger">Delete</button>
-                                    </th>
+                                        <th scope="col">
+                                            <button type="submit" form="my-form" name="update" id="btn" disabled="true"
+                                                class="btn btn-danger">Delete</button>
+                                        </th>
 
-                                </tr>
-                            </thead>
-                            <?php
-                            foreach ($display as $row) {
-                            ?>
-                            <tr id="table">
-                                <td style="width:5px;">
-                                    <input type="checkbox" class="check" name="delete_data[]"
-                                        value="<?php echo $row['Id']; ?>">
-                                </td>
-                                <div>
-                                    <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
-                                    <td class="<?php echo $row['Id']; ?>"><?php echo $row['Subject']; ?></td>
-                                    <td class="<?php echo $row['Id']; ?>"><?php echo $row['DateTime']; ?></td>
-                                </div>
+                                    </tr>
+                                </thead>
+                                <?php
+                                foreach ($display as $row) {
+                                ?>
+                                <tr id="table">
+                                    <td style="width:5px;">
+                                        <input type="checkbox" class="check" name="delete_data[]"
+                                            value="<?php echo $row['Id']; ?>">
+                                    </td>
+                                    <div>
+                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
+                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['Subject']; ?></td>
+                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['DateTime']; ?></td>
+                                    </div>
 
-
-                            </tr>
-                            <?php
-                            }
-                            ?>
-                            <tbody>
-                                <tr>
 
                                 </tr>
-                            </tbody>
-                        </table>
-                    </form>
+                                <?php
+                                }
+                                ?>
+                                <tbody>
+                                    <tr>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
                 </div>
+                <br>
                 <?php
                 include '../php/dbconnect.php';
+                error_reporting(0);
                 $page =  $_GET['page'];
                 $start_per = 20;
                 $query = " SELECT * FROM Send_Msg where  Draft=2 ";

@@ -1,2 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "tse", "0wi&lbRuPuv", "Ajay");
+// var_dump($_SERVER['HTTP_ORIGIN']);
+
+
+$conn = new mysqli("localhost", "root", "hestabit", "mailman");

@@ -22,7 +22,8 @@ if (isset($_POST['submit'])) {
   $send_delete = 1;
   $inbox_delete = 1;
   $read = 1;
-
+  $Cc_delete = 1;
+  $Bcc_delete = 1;
   $image_name = count($_FILES['Image']);
 
   $imgval = [];
@@ -40,7 +41,7 @@ if (isset($_POST['submit'])) {
   }
 
 
-  $fun1 = $db->insertRecord($to, $cc, $bcc, $sub, $msg, $from, $draft, $imgval, $draft_delete, $send_delete, $inbox_delete, $read, $date);
+  $fun1 = $db->insertRecord($to, $cc, $bcc, $sub, $msg, $from, $draft, $imgval, $draft_delete, $send_delete, $inbox_delete, $read, $Bcc_delete, $Cc_delete, $date);
 }
 if (isset($_POST['close'])) {
   $to = $_POST['to'];

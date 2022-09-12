@@ -40,73 +40,78 @@
  <body>
      <div class="container">
          <div class="row mt-5">
-             <div class="col-sm-12" style="background:white; border:2px solid red;">
-
-                 <h1>Profile Update</h1>
-                 <span> </span>
-                 <div class="col-sm-10">
-                     <?php
-                        if (isset($_SESSION['status'])) {
-                        ?>
-                     <div class="alert alert-success alert-dismissible fade show" id="flash-msg" role="alert">
-                         <strong></strong> <?php echo $_SESSION['status']; ?>
-                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+             <div class="col-sm-12">
+                 <div class="card" style="width: 100%;">
+                     <div class="card-header">
+                         <h4>Profile Update</h4>
                      </div>
+                     <br>
+                     <span> </span>
+                     <div class="col-sm-10">
+                         <?php
+                            if (isset($_SESSION['status'])) {
+                            ?>
+                         <div class="alert alert-success alert-dismissible fade show" id="flash-msg" role="alert">
+                             <strong></strong> <?php echo $_SESSION['status']; ?>
+                             <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                 aria-label="Close"></button>
+                         </div>
 
-                     <?php
-                            unset($_SESSION['status']);
-                        }
-                        ?>
+                         <?php
+                                unset($_SESSION['status']);
+                            }
+                            ?>
 
-                     <form action="#" method="POST" enctype="multipart/form-data" onsubmit="return validation()">
-                         <div class="row  ">
+                         <form action="#" method="POST" enctype="multipart/form-data" onsubmit="return validation()">
+                             <div class="row  ">
 
 
-                             <div class="col-md-2 order-md-last mb-3" id="preview">
-                                 <img src="<?php echo '../Register_image/' . $getdata['image']; ?>" id="default-preview"
-                                     class="text-center" width="150" height="150" style="border-radius: 50%;">
+                                 <div class="col-md-2 order-md-last mb-3" id="preview">
+                                     <img src="<?php echo '../Register_image/' . $getdata['image']; ?>"
+                                         id="default-preview" class="text-center" width="150" height="150"
+                                         style="border-radius: 50%;">
 
-                                 <div id="imgpreview"></div>
-                                 <input type="file" id="image" name="image">
-                                 <input type="hidden" name="id" value="<?php echo $getdata['id']; ?>">
-                                 <span class="text-danger" id="InpImg"></span>
+                                     <div id="imgpreview"></div>
+                                     <input type="file" id="image" name="image">
+                                     <input type="hidden" name="id" value="<?php echo $getdata['id']; ?>">
+                                     <span class="text-danger" id="InpImg"></span>
 
-                             </div>
-                             <div class="input">
+                                 </div>
+                                 <div class="input">
 
-                             </div>
-                             <div class="col-md-10 ">
-                                 <div class="row">
-                                     <div class="col-md-8">
-                                         <input type="text" class="form-control" placeholder="Enter your first name"
-                                             id="fname" name="fname" value="<?php echo $getdata['fname']; ?>">
-                                         <span class="text-danger" id="txtname"></span><br>
-                                         <input type="text" class="form-control" placeholder="Last Name" id="lname"
-                                             name="lname" value="<?php echo $getdata['lname']; ?>">
-                                         <span class="text-danger" id="lastname"></span><br>
+                                 </div>
+                                 <div class="col-md-10 ">
+                                     <div class="row">
+                                         <div class="col-md-8">
+                                             <input type="text" class="form-control" placeholder="Enter your first name"
+                                                 id="fname" name="fname" value="<?php echo $getdata['fname']; ?>">
+                                             <span class="text-danger" id="txtname"></span><br>
+                                             <input type="text" class="form-control" placeholder="Last Name" id="lname"
+                                                 name="lname" value="<?php echo $getdata['lname']; ?>">
+                                             <span class="text-danger" id="lastname"></span><br>
 
-                                         <div>
-                                             <input type="email" class="form-control" name="remail"
-                                                 placeholder="Enter your Email" id="remail"
-                                                 value="<?php echo $getdata['recovery_email']; ?>">
-                                             <!-- <span <?php echo $msg ?>></span> -->
+                                             <div>
+                                                 <input type="email" class="form-control" name="remail"
+                                                     placeholder="Enter your Email" id="remail"
+                                                     value="<?php echo $getdata['recovery_email']; ?>">
+                                                 <!-- <span <?php echo $msg ?>></span> -->
+                                             </div>
+                                             <span class="text-danger" id="useremail"></span><br>
                                          </div>
-                                         <span class="text-danger" id="useremail"></span><br>
+                                     </div>
+                                     <div class="row ">
+                                         <div class="col-md-8">
+
+
+                                             <br><br>
+                                             <button type="submit" class="btn btn-success" id="btn"
+                                                 name="update">Update</button>
+                                             <a href="../mailman/dashboard.php" class="btn btn-success">dashboard</a>
+                                         </div>
                                      </div>
                                  </div>
-                                 <div class="row ">
-                                     <div class="col-md-8">
-
-
-                                         <br><br>
-                                         <button type="submit" class="btn btn-success" id="btn"
-                                             name="update">Update</button>
-                                         <a href="../mailman/dashboard.php" class="btn btn-success">dashboard</a>
-                                     </div>
-                                 </div>
-                             </div>
-                     </form>
-
+                         </form>
+                     </div>
 
                  </div>
              </div>
@@ -114,11 +119,7 @@
 
              <!-- <script  src="../Js/javascript.js"></script> -->
              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-             <script>
-             if (window.history.replaceState) {
-                 window.history.replaceState(null, null, window.location.href);
-             }
-             </script>
+
  </body>
 
  </html>

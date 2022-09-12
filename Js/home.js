@@ -182,7 +182,9 @@ function validation() {
     if (status_name == false || status_last == false || status_user == false || status_email == false || status_remail == false || status_pass == false || status_cpass == false || status_remail == false || status_image == false) {
         return false;
     }
-
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 
 }
 function testWhiteSpace(string) {

@@ -80,7 +80,7 @@ foreach ($obj->data as $row) {
             </div>
             <div class="col-sm-5" style="min-height: 80px; background:antiquewhite;">
                 <form class="">
-                    <input class=" mt-3 search" type="search" placeholder="  Search">
+                    <input class=" mt-3 search" type="search" placeholder="  Search" id="search">
 
 
                 </form>
@@ -89,7 +89,7 @@ foreach ($obj->data as $row) {
                 <div class="dropdown mt-2 mx-4">
                     <a class=" btn btn-light btn-lg dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <?php echo $_SESSION['email']; ?>
+                        <?php echo $_SESSION['username']; ?>
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -156,49 +156,58 @@ foreach ($obj->data as $row) {
             </div>
 
             <div class="col-sm-10" id="inbox">
-                <div class="table-responsive" id="no-more-tables">
-                    <div id="table-bordered">
-                        <form action="../php/delete.php" method="POST" id="my-form">
-                            <table class="table table-hover ">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">
-                                            <input type="checkbox" id="check" class="Item">
-                                        </th>
+                <br>
+                <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                        <h4>Send</h4>
+                    </div>
+                    <div class="table-responsive" id="no-more-tables">
+                        <div id="table-bordered">
+                            <form action="../php/delete.php" method="POST" id="my-form">
+                                <table class="table table-hover ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">
+                                                <input type="checkbox" id="check" class="Item">
+                                            </th>
 
-                                        <th scope="col">
-                                            <button type="submit" form="my-form" name="update" disabled="true" id="btn"
-                                                class="btn btn-danger">Delete</button>
+                                            <th scope="col">
+                                                <button type="submit" form="my-form" name="update" disabled="true"
+                                                    id="btn" class="btn btn-danger">Delete</button>
 
-                                        </th>
+                                            </th>
 
+                                        </tr>
+                                    </thead>
+                                    <?php
+                                    while ($row = mysqli_fetch_array($record)) {
+
+                                    ?>
+                                    <tr id="table">
+                                        <div id="search_result"></div>
+                                        <td style="width:5px;">
+                                            <input type="checkbox" class="Item" name="delete_data[]"
+                                                value="<?php echo $row['Id']; ?>" />
+                                        </td>
+                                        <div>
+                                            <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
+                                            <td class="<?php echo $row['Id']; ?>"><?php echo $row['Subject']; ?></td>
+                                            <td class="<?php echo $row['Id']; ?>"><?php echo $row['DateTime']; ?></td>
+                                        </div>
                                     </tr>
-                                </thead>
-                                <?php
-                                while ($row = mysqli_fetch_array($record)) {
-
-                                ?>
-                                <tr id="table">
-                                    <td style="width:5px;">
-                                        <input type="checkbox" class="Item" name="delete_data[]"
-                                            value="<?php echo $row['Id']; ?>" />
-                                    </td>
-                                    <div>
-                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
-                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['Subject']; ?></td>
-                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['DateTime']; ?></td>
-                                    </div>
-                                </tr>
-                                <?php
-                                }
-                                ?>
-                                <tbody>
-                                </tbody>
-                            </table>
+                                    <?php
+                                    }
+                                    ?>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                        </div>
                     </div>
                 </div>
+                <br>
                 <?php
                 include '../php/dbconnect.php';
+                error_reporting(0);
                 $page =  $_GET['page'];
 
                 $start_per = 15;

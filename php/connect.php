@@ -3,9 +3,9 @@ session_start();
 class Model
 {
     public $host = 'localhost';
-    public $username = 'tse';
-    public $password = '0wi&lbRuPuv';
-    public $dbname = 'Ajay';
+    public $username = 'root';
+    public $password = 'hestabit';
+    public $dbname = 'mailman';
     public $conn;
 
     public function __construct()
@@ -18,7 +18,18 @@ class Model
     public function search($input)
     {
         $from = $_SESSION['email'];
-        $sql = "SELECT * FROM Send_Msg Where `To` LIKE '%{$from}%' or  Msg LIKE '{$input}%' ";
+        $sql = "SELECT * FROM Send_Msg Where  `To` LIKE '%{$from}%' AND `From` LIKE '%{$input}%' or `Cc` LIKE '%{$input}%'  ";
+        $query = mysqli_query($this->conn, $sql);
+        if (mysqli_num_rows($query) > 0) {
+        } else {
+            echo "<span class='text-danger'>Data Not Found</span>";
+        }
+        return $query;
+    }
+    public function search_index($input)
+    {
+        $from = $_SESSION['email'];
+        $sql = "SELECT * FROM Send_Msg Where `From` LIKE '%{$from}%' AND `To` LIKE '%{$input}%' ";
         $query = mysqli_query($this->conn, $sql);
         if (mysqli_num_rows($query) > 0) {
         } else {

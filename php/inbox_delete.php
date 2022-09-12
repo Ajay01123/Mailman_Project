@@ -5,10 +5,11 @@ if (!isset($_SESSION)) {
 include '../php/username.php';
 
 foreach ($_POST['delete_data'] as $dataId) {
-    $sql = "UPDATE Send_Msg SET Inbox_detete  = 0,Trash_delete =1 where Id = '$dataId'   ";
+    $sql = "UPDATE Send_Msg SET Inbox_detete  = 0 OR Cc_delete = 0 OR Bcc_delete =0,Trash_delete = 1 where Id ='$dataId'";
     $result = mysqli_query($connect, $sql);
 }
 if ($result) {
+    //http: //localhost/Mailman/Js/dashboard.js:98
     $_SESSION['user'] = "Message Deleted Successfully";
     header('location:../mailman/dashboard.php');
 } else {

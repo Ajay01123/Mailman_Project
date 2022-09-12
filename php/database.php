@@ -1,4 +1,10 @@
 <?php
+// var_dump($_SERVER['HTTP_ORIGIN']);
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if (!isset($_SESSION)) {
   session_start();
 }
@@ -6,9 +12,9 @@ class Register
 {
 
   public $host = 'localhost';
-  public $username = 'tse';
-  public $password = '0wi&lbRuPuv';
-  public $dbname = 'Ajay';
+  public $username = 'root';
+  public $password = 'hestabit';
+  public $dbname = 'mailman';
   public $conn;
 
   public function __construct()
@@ -29,21 +35,25 @@ class Register
       return false;
     }
   }
-  public function login($username, $email, $password)
+  public function login($email, $password)
   {
     $password = md5($password);
-    $query = "SELECT * FROM Register_tb WHERE (email = '$email' or username ='$email')and `password`='$password'";
-    $result = mysqli_query($this->conn, $query);
-    if (mysqli_num_rows($result) > 0) {
-      $row = mysqli_fetch_array($result);
-      $_SESSION['status'] = "Login Successfully";
-      $_SESSION['email'] = ($row['email']);
-      $_SESSION['username'] = ($row['username']);
-      $password = ($row['password']);
-      header('location:../mailman/dashboard.php');
+    if ($email != "" && $password != "") {
+      $query = "SELECT * FROM Register_tb WHERE (email = '$email' or username ='$email')and `password`='$password'";
+      $result = mysqli_query($this->conn, $query);
+      if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_array($result);
+        $_SESSION['email'] = ($row['email']);
+        $_SESSION['username'] = ($row['username']);
+        header('location:../mailman/dashboard.php');
+      } else {
+        $_SESSION['errorEmail'] = $email;
+        $_SESSION['errorPassword'] = $password;
+        $_SESSION['name'] = "Username or password not matched";
+        header("Location:../mailman/index.php");
+      }
     } else {
-      $_SESSION['name'] = "Username or password not matched";
-      header("Location:../mailman/index.php");
+      echo "<span class='text-danger'>Plaese fill the data </span>";
     }
   }
   public function profile($get)

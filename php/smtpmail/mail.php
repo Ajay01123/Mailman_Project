@@ -46,7 +46,11 @@ function sendMail($remail, $reset_token)
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
-$con = new  mysqli("localhost", "tse", "0wi&lbRuPuv", "Ajay");
+
+// var_dump($_SERVER['HTTP_ORIGIN']);
+
+
+$con = new  mysqli("localhost", "root", "hestabit", "mailman");
 
 if (isset($_POST['send'])) {
     $remail = $_POST['remail'];

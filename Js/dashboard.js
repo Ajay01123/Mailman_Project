@@ -45,7 +45,8 @@ $(".checkItem").change(function () {
 
 
 $('document').ready(function () {
-    $("#search").keyup(function () {
+    $("#search1").keyup(function () {
+
         var input = $(this).val();
 
         if (input != "") {
@@ -56,12 +57,12 @@ $('document').ready(function () {
                     input: input
                 },
                 success: function (data) {
-                    $("#search_result").html(data);
+                    $("#search_result1").html(data);
                 }
 
             })
         } else {
-            $("#search_result").css("display", "none");
+            $("#search_result1").css("display", "none");
         }
 
     });
@@ -88,14 +89,14 @@ $("#table td").click(function () {
             $.each(image, function (indexInArray, valueOfElement) {
                 if (valueOfElement != null) {
                     images += '<div><a href="../Upload1/' + valueOfElement +
-                        '" download>' + valueOfElement + '</a> download</div>'
+                        '" download>' + valueOfElement + '</a> </div>'
                 }
             });
 
 
             let html = '<div class="d-flex justify-content-between">' +
                 '<div>' +
-                '<h1>Subject : ' + response.Subject + '</h1>' +
+                '<h1 id ="reply-sub" subject="' + response.Subject + '">Subject : ' + response.Subject + '</h1>' +
                 '</div>' +
                 '<div>' +
                 '<div class="d-grid gap-2 d-md-flex justify-content-md-end">DateTime : ' +
@@ -107,23 +108,34 @@ $("#table td").click(function () {
                 'Participants' +
                 '</button>' +
                 '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">' +
-                '<li>From : ' + response.From + ' </li>' +
+                '<li id="reply-from" data="' + response.From + '">From : ' + response.From + ' </li>' +
                 '<li>To : ' + response.To + '</a></li>' +
-                '<li>CC : ' + response.Cc + '</a></li>' +
-                '<li>BCC : ' + response.Bcc + '</a></li>' +
+                '<li id="CC-reply" CC="' + response.Cc + '" >CC : ' + response.Cc + '</a></li>' +
+                '<li id="Bcc-reply" Bcc="' + response.Bcc + '" >BCC : ' + response.Bcc + '</a></li>' +
+                // (response.To !== vairable) && '< li > BCC : ' + response.Bcc + '</a ></li > ' +
+
 
                 '</ul>' +
                 '</div>' +
                 '<br>' +
-                '<div style="border:1px solid black; min-height:200px;">' +
+
+
+                '<div >' +
                 response.Msg +
+
                 '</div>' +
                 '<br>' +
-                images + '<div class="d-grid gap-2 d-md-flex justify-content-md-end">' +
-                '<button type="submit" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Reply'
+                images +
+                '<div class="d-grid gap-2 d-md-flex justify-content-md-end">' +
+                '<input type="submit" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" value="Reply" id="reply-btn"> ' +
+                '<button type="submit" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#static-Backdrop" id="reply-btn"> Reply all'
             '</button>' +
+
                 '</div>';
+
+
             $('#inbox').html(html);
+
         }
     });
 });

@@ -74,7 +74,7 @@
                                              <span class="text-danger" id="useremail"></span>
                                              <span id="email_id"></span>
                                              <span
-                                                 class="d-grid gap-2 d-md-flex justify-content-md-end">xyz@mailman.com</span>
+                                                 class="d-grid gap-2 d-md-flex justify-content-md-end">@mailman.com</span>
                                          </div>
                                          <br>
                                      </div>
@@ -98,9 +98,10 @@
                                          above Terms & Conditions.<br>
                                          <span class="text-danger" id="agree"></span>
                                          <br><br>
-                                         <button type="submit" name="submit" class="btn btn-success"
-                                             id="submit">Submit</button>
-                                         <a href="index.php" class="btn btn-success">Sign-in-inserted</a>
+                                         <button type="submit" name="submit" class="btn btn-success" id="submit"
+                                             data-toggle="tooltip" data-placement="top"
+                                             title="Tooltip on top">Submit</button>
+                                         <a href="index.php" class="btn btn-outline-secondary">Sign-in-inserted</a>
                                      </div>
                                  </div>
                              </div>

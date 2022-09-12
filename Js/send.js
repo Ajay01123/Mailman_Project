@@ -34,6 +34,32 @@ $(document).ready(function () {
         })
     }
 });
+
+$(document).ready(function () {
+
+    $("#search").keyup(function () {
+
+        var input = $(this).val();
+
+        if (input != "") {
+            $.ajax({
+                url: "../php/search_inbox.php",
+                method: "post",
+                data: {
+                    input: input
+                },
+                success: function (data) {
+
+                    $("#search_result").html(data);
+                }
+
+            })
+        } else {
+            $("#search_result").css("display", "none");
+        }
+
+    });
+});
 $(document).on('click', '.pagination_link', function () {
     var page = $(this).attr("id");
     load_data(page);

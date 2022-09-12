@@ -4,9 +4,9 @@ include 'database.php';
 // if(!isset($_SESSION)){
 
 // }
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 if (isset($_POST['submit'])) {
   $fname = $_POST['fname'];
@@ -22,7 +22,8 @@ if (isset($_POST['submit'])) {
   $tempname = $_FILES['image']['tmp_name'];
 
   $folder = "../Register_image/" . $file;
-  move_uploaded_file($tempname,  $folder); {
+  move_uploaded_file($tempname,  $folder);
+  if ($fname != "" &&  $lname != "" &&  $username != "" &&  $email != "" && $remail != ""  && $password != "") {
     $query = "INSERT INTO Register_tb(fname,lname,username,email,recovery_email,`password`,`image`)VALUES('$fname','$lname','$username','$email','$remail','$password','$file')";
 
     if ($obj->insert($query)) {
@@ -44,5 +45,7 @@ if (isset($_POST['submit'])) {
     } else {
       echo "Your Registration is not Successfully";
     }
+  } else {
+    echo "<span class='text-danger'>Plaese fill the data </span>";
   }
 }

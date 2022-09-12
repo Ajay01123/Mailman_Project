@@ -2,6 +2,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+
 if (!isset($_SERVER['HTTP_REFERER'])) {
 
     header("Location:../mailman/dashboard.php");
@@ -53,19 +54,25 @@ if (isset($_POST['update'])) {
             ?>
             <div class="col-sm-4"></div>
 
-            <div class="col-sm-4 mt-5" style="border:2px solid red ;"><br>
-
-                <form action="edit_password.php" method="POST" onsubmit="return validation()">
-                    <input type="password" class="form-control" placeholder="Old Password" name="password"
-                        id="old_password">
-                    <span class="text-danger" id="change"></span><br><br>
-                    <input type="password" class="form-control" placeholder="New Password" name="New_password"
-                        id="pass">
-                    <span class="text-danger" id="password"></span><br><br>
-                    <input type="password" class="form-control" placeholder="Comfrim Password" id="cpass">
-                    <span class="text-danger" id="cpassword"></span><br>
-                    <button type="submit" class="btn btn-success" name="update">Submit</button>
-                    <input type="hidden" name="remail" />
+            <div class="col-sm-5 mt-5"><br>
+                <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                        <h4> Password update</h4>
+                    </div>
+                    <br>
+                    <form action="edit_password.php" method="POST" onsubmit="return validation()">
+                        <input type="password" class="form-control" placeholder="Old Password" name="password"
+                            id="old_password">
+                        <span class="text-danger" id="change"></span><br><br>
+                        <input type="password" class="form-control" placeholder="New Password" name="New_password"
+                            id="pass">
+                        <span class="text-danger" id="password"></span><br><br>
+                        <input type="password" class="form-control" placeholder="Comfrim Password" id="cpass">
+                        <span class="text-danger" id="cpassword"></span><br>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-outline-dark" name="update">Submit</button>
+                <input type="hidden" name="remail" />
                 </form>
             </div>
         </div>

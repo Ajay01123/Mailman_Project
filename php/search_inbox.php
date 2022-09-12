@@ -1,23 +1,26 @@
 <?php
 include '../php/connect.php';
+
 if (isset($_POST['input'])) {
     $input = $_POST['input'];
 
-    $record = $db->search($input);
+    $record = $db->search_index($input);
 
 ?>
 <div class="table-responsive" id="no-more-tables">
-    <form action="../php/inbox_delete.php" method="POST">
+    <form>
         <table class="table bg-white">
             <?php
                 while ($row = mysqli_fetch_assoc($record)) {
+
                 ?>
             <tr>
                 <td style="width:5px;">
                     <input type="checkbox" class="checkItem" name="delete_data[]" value="<?php echo $row['Id']; ?>">
                 </td>
-                <?php if ('Inbox_detete' == 1) ?>
-                <td><?php echo $row['From']; ?>
+                <?php if ('Send_delete' == 1)  ?>
+                <td><?php echo $row['To']; ?>
+
             </tr>
             <?php
                 }

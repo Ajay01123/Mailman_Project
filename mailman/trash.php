@@ -78,7 +78,7 @@ foreach ($obj->data as $row) {
                 <div class="dropdown mt-2 mx-4">
                     <a class=" btn btn-light btn-lg dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <?php echo $_SESSION['email']; ?>
+                        <?php echo $_SESSION['username']; ?>
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -144,154 +144,166 @@ foreach ($obj->data as $row) {
                 </nav>
             </div>
             <div class="col-sm-10" id="inbox">
-                <div class="table-responsive" id="no-more-tables">
+                <br>
 
-                    <table class="table table-hover">
+                <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                        <h4>Trash</h4>
+                    </div>
+                    <div class="table-responsive" id="no-more-tables">
 
-                        <tr>
-                            <th>
-                                <input type="checkbox" id="all" class="check">
-                            </th>
+                        <table class="table table-hover">
 
-                            <th>
-                                <button type="submit" name="delete" form="my-form" id="btn" disabled="true"
-                                    class="btn btn-danger">
-                                    Delete</button>
-                                <button type="submit" form="my-form" name="update" class=" btn btn-info" id="restore"
-                                    disabled="true">Restore</button>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" id="all" class="check">
+                                </th>
 
-                            </th>
+                                <th>
+                                    <button type="submit" name="delete" form="my-form" id="btn" disabled="true"
+                                        class="btn btn-danger">
+                                        Delete</button>
+                                    <button type="submit" form="my-form" name="update" class=" btn btn-info"
+                                        id="restore" disabled="true">Restore</button>
 
-                        </tr>
-                        </thead>
-
-                        <form action="../php/trash_delete.php" method="POST" id="my-form">
-
-                            <?php
-                            while ($row = mysqli_fetch_array($record)) {
-                            ?>
-                            <tr id="table">
-                                <td style="width:5px;">
-                                    <input type="checkbox" class="check " name="delete_data[]"
-                                        value="<?php echo $row['Id']; ?>" />
-                                </td>
-                                <div>
-
-                                    <?php if ($row['Draft'] == 3  && $row['Send_delete'] == 0 && $row['Inbox_detete'] == 0) {
-                                        ?>
-                                    <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
-                                    <?php
-
-                                        } elseif ($row['Inbox_detete'] != 0) {
-                                        ?>
-                                    <td class="<?php echo $row['Id']; ?>"><?php echo $row['From']; ?></td>
-                                    <?php } else {
-                                        ?> <td class="<?php echo $row['Id']; ?>"><?php echo $row['From']; ?></td>
-                                    <?php
-                                        } ?>
-
-                                    <td class="<?php echo $row['Id']; ?>"><?php echo $row['Subject']; ?></td>
-                                    <td class="<?php echo $row['Id']; ?>"><?php echo $row['DateTime']; ?></td>
-                                </div>
+                                </th>
 
                             </tr>
-                            <?php
-                            }
-                            ?>
-                            <?php
-                            while ($row = mysqli_fetch_array($sendrecord)) {
-                            ?>
-                            <tr id="table">
-                                <td style="width:5px;">
-                                    <input type="checkbox" class="check " name="delete_data[]"
-                                        value="<?php echo $row['Id']; ?>" />
-                                </td>
-                                <div>
+                            </thead>
 
-                                    <?php if ($row['Send_delete'] == 0) {
-                                        ?>
-                                    <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
-                                    <?php
+                            <form action="../php/trash_delete.php" method="POST" id="my-form">
 
-                                        } elseif ($row['Inbox_detete'] != 0) {
-                                        ?>
-                                    <td class="<?php echo $row['Id']; ?>"><?php echo $row['From']; ?></td>
-                                    <?php } else {
-                                        ?> <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
-                                    <?php
-                                        } ?>
+                                <?php
+                                while ($row = mysqli_fetch_array($record)) {
+                                ?>
+                                <tr id="table">
+                                    <td style="width:5px;">
+                                        <input type="checkbox" class="check " name="delete_data[]"
+                                            value="<?php echo $row['Id']; ?>" />
+                                    </td>
+                                    <div>
 
-                                    <td class="<?php echo $row['Id']; ?>"><?php echo $row['Subject']; ?></td>
-                                    <td class="<?php echo $row['Id']; ?>"><?php echo $row['DateTime']; ?></td>
-                                </div>
+                                        <?php if ($row['Draft'] == 3  && $row['Send_delete'] == 0 && $row['Inbox_detete'] == 0) {
+                                            ?>
+                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
+                                        <?php
 
-                            </tr>
-                            <?php
-                            }
-                            ?>
-                            <?php
-                            while ($row = mysqli_fetch_array($result)) {
-                            ?>
-                            <tr id="table">
-                                <td style="width:5px;">
-                                    <input type="checkbox" class="check " name="delete_data[]"
-                                        value="<?php echo $row['Id']; ?>" />
-                                </td>
-                                <div>
+                                            } elseif ($row['Inbox_detete'] != 0) {
+                                            ?>
+                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['From']; ?></td>
+                                        <?php } else {
+                                            ?> <td class="<?php echo $row['Id']; ?>"><?php echo $row['From']; ?></td>
+                                        <?php
+                                            } ?>
 
-                                    <?php if ($row['Draft'] == 3) {
-                                        ?>
-                                    <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
-                                    <?php
+                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['Subject']; ?></td>
+                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['DateTime']; ?></td>
+                                    </div>
 
-                                        } elseif ($row['Inbox_detete'] != 0) {
-                                        ?>
-                                    <td class="<?php echo $row['Id']; ?>"><?php echo $row['From']; ?></td>
-                                    <?php } else {
-                                        ?> <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
-                                    <?php
-                                        } ?>
-
-                                    <td class="<?php echo $row['Id']; ?>"><?php echo $row['Subject']; ?></td>
-                                    <td class="<?php echo $row['Id']; ?>"><?php echo $row['DateTime']; ?></td>
-                                </div>
-
-                            </tr>
-                            <?php
-                            }
-                            ?>
-                            <tbody>
-                                <tr>
                                 </tr>
-                            </tbody>
-                    </table>
-                    <?php
-                    include '../php/dbconnect.php';
-                    $page =  $_GET['page'];
+                                <?php
+                                }
+                                ?>
+                                <?php
+                                while ($row = mysqli_fetch_array($sendrecord)) {
+                                ?>
+                                <tr id="table">
+                                    <td style="width:5px;">
+                                        <input type="checkbox" class="check " name="delete_data[]"
+                                            value="<?php echo $row['Id']; ?>" />
+                                    </td>
+                                    <div>
 
-                    $start_per = 20;
-                    $query = " SELECT * FROM Send_Msg where Trash_delete =1  ";
-                    $result = mysqli_query($conn, $query);
-                    $total = mysqli_num_rows($result);
-                    $total_page = ceil($total / $start_per);
-                    ?>
-                    <nav aria-label="Page navigation example">
-                        <ul class='pagination text-center' id="pagination">
-                            <?php if ($page > 1) : ?>
-                            <li class="page-item"><a class="page-link"
-                                    href='trash.php?page=<?php echo $page - 1; ?>'>Previous</a></li>
-                            <?php endif ?>
-                            <?php for ($i = 1; $i <= $total_page; $i++) :  ?>
-                            <li class="page-item" id="<?php echo $i; ?>"><a class="page-link"
-                                    href='trash.php?page=<?php echo $i; ?>'><?php echo $i; ?></a></li>
-                            <?php endfor; ?>
-                            <?php if ($total_page > $page) : ?>
-                            <li class="page-item"><a class="page-link"
-                                    href='trash.php?page=<?php echo $page + 1; ?>'>Next</a></li>
-                            <?php endif ?>
-                        </ul>
-                    </nav>
+                                        <?php if ($row['Send_delete'] == 0) {
+                                            ?>
+                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
+                                        <?php
+
+                                            } elseif ($row['Inbox_detete'] != 0) {
+                                            ?>
+                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['From']; ?></td>
+                                        <?php } else {
+                                            ?> <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
+                                        <?php
+                                            } ?>
+
+                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['Subject']; ?></td>
+                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['DateTime']; ?></td>
+                                    </div>
+
+                                </tr>
+                                <?php
+                                }
+                                ?>
+                                <?php
+                                while ($row = mysqli_fetch_array($result)) {
+                                ?>
+                                <tr id="table">
+                                    <td style="width:5px;">
+                                        <input type="checkbox" class="check " name="delete_data[]"
+                                            value="<?php echo $row['Id']; ?>" />
+                                    </td>
+                                    <div>
+
+                                        <?php if ($row['Draft'] == 3) {
+                                            ?>
+                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
+                                        <?php
+
+                                            } elseif ($row['Inbox_detete'] != 0) {
+                                            ?>
+                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['From']; ?></td>
+                                        <?php } else {
+                                            ?> <td class="<?php echo $row['Id']; ?>"><?php echo $row['To']; ?></td>
+                                        <?php
+                                            } ?>
+
+                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['Subject']; ?></td>
+                                        <td class="<?php echo $row['Id']; ?>"><?php echo $row['DateTime']; ?></td>
+                                    </div>
+
+                                </tr>
+                                <?php
+                                }
+                                ?>
+                                <tbody>
+                                    <tr>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
                 </div>
+
+                <br>
+                <?php
+                include '../php/dbconnect.php';
+                error_reporting(0);
+                $page =  $_GET['page'];
+
+                $start_per = 20;
+                $query = " SELECT * FROM Send_Msg where Trash_delete =1  ";
+                $result = mysqli_query($conn, $query);
+                $total = mysqli_num_rows($result);
+                $total_page = ceil($total / $start_per);
+                ?>
+                <nav aria-label="Page navigation example">
+                    <ul class='pagination text-center' id="pagination">
+                        <?php if ($page > 1) : ?>
+                        <li class="page-item"><a class="page-link"
+                                href='trash.php?page=<?php echo $page - 1; ?>'>Previous</a></li>
+                        <?php endif ?>
+                        <?php for ($i = 1; $i <= $total_page; $i++) :  ?>
+                        <li class="page-item" id="<?php echo $i; ?>"><a class="page-link"
+                                href='trash.php?page=<?php echo $i; ?>'><?php echo $i; ?></a></li>
+                        <?php endfor; ?>
+                        <?php if ($total_page > $page) : ?>
+                        <li class="page-item"><a class="page-link"
+                                href='trash.php?page=<?php echo $page + 1; ?>'>Next</a>
+                        </li>
+                        <?php endif ?>
+                    </ul>
+                </nav>
+
             </div>
         </div>
         <div class="row">
