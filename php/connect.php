@@ -47,5 +47,4 @@ class Model
         }
     }
 }
-
 $db = new Model();

@@ -3,9 +3,6 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-//var_dump($_SERVER['HTTP_ORIGIN']);
-
-
 $connect = new  mysqli("localhost",  "tes", "0wi&lbRuPuv", "Ajay");
 if (isset($_POST["result"])) {
     $username = mysqli_real_escape_string($connect, $_POST["result"]);

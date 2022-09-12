@@ -56,8 +56,7 @@ if (isset($_POST['send'])) {
     $remail = $_POST['remail'];
 
     $query = "SELECT * FROM `Register_tb`where `recovery_email`='$remail'";
-    //echo $query;
-    //die();
+
     $result = mysqli_query($con, $query);
 
     if ($result) {
