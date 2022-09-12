@@ -56,7 +56,7 @@ if (isset($_POST['close'])) {
   $send_delete = 2;
   $inbox_delete = 2;
   $image_name = count($_FILES['Image']);
-  //$image_arr = array();
+
   $imgval = [];
   for ($i = 0; $i < $image_name; $i++) {
 

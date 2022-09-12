@@ -47,7 +47,7 @@ function sendMail($remail, $reset_token)
     }
 }
 
-// var_dump($_SERVER['HTTP_ORIGIN']);
+
 
 
 $con = new  mysqli("localhost",  "tes", "0wi&lbRuPuv", "Ajay");

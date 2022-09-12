@@ -1,6 +1,4 @@
 <?php
-
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -11,10 +9,10 @@ if (!isset($_SESSION)) {
 class Register
 {
 
-  public $host = 'localhost';
-  public $username = 'tes';
-  public $password = '0wi&lbRuPuv';
-  public $dbname = 'Ajay';
+  public $host = "localhost";
+  public $username = "tes";
+  public $password = "0wi&lbRuPuv";
+  public $dbname =  "Ajay";
   public $conn;
 
   public function __construct()
