@@ -13,8 +13,6 @@ $obj->profile($query);
 foreach ($obj->data as $row) {
 }
 
-
-
 if ($_SESSION['email'] == "") {
     header("Location:../mailman/index.php");
 }
@@ -147,8 +145,8 @@ if ($_SESSION['email'] == "") {
                                 <form action="../php/composer.php" method="POST" enctype="multipart/form-data"
                                     onsubmit="return validation()">
                                     <input type="email" class="form-control" placeholder="TO" name="to"><br>
-                                    <input type="text" class="form-control" placeholder="CC" name="cc"><br>
-                                    <input type="text" class="form-control" placeholder="BCC" name="bcc"><br>
+                                    <input type="email" class="form-control" placeholder="CC" name="cc"><br>
+                                    <input type="email" class="form-control" placeholder="BCC" name="bcc"><br>
                                     <input type="text" class="form-control" placeholder="Subject" name="sub"><br>
                                     <textarea class="form-control" rows="5" cols="3" placeholder="Message"
                                         name="msg"></textarea><br>
