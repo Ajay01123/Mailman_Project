@@ -50,7 +50,7 @@ function sendMail($remail, $reset_token)
 
 
 
-$con = new  mysqli("localhost",  "tes", "0wi&lbRuPuv", "Ajay");
+$con = new  mysqli("localhost",  "tse", "0wi&lbRuPuv", "Ajay");
 
 if (isset($_POST['send'])) {
     $remail = $_POST['remail'];

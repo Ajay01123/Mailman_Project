@@ -1,6 +1,6 @@
 <?php
 
-$connect = new mysqli("localhost",  "tes", "0wi&lbRuPuv", "Ajay");
+$connect = new mysqli("localhost",  "tse", "0wi&lbRuPuv", "Ajay");
 if (isset($_POST["email_id"])) {
     $email = mysqli_real_escape_string($connect, $_POST["email_id"]);
     $query = "SELECT * FROM Register_tb where email = '" . $email . "' ";

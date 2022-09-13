@@ -1,6 +1,6 @@
 <?php
 
-$connect =  new mysqli("localhost",  "tes", "0wi&lbRuPuv", "Ajay");
+$connect =  new mysqli("localhost",  "tse", "0wi&lbRuPuv", "Ajay");
 $id = $_POST["id"];
 $query = "SELECT * FROM Send_Msg where Id = '" . $id . "' ";
 $result = mysqli_query($connect, $query);

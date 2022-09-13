@@ -2,4 +2,4 @@
 
 
 
-$conn = new mysqli("localhost", "tes", "0wi&lbRuPuv", "Ajay");
+$conn = new mysqli("localhost", "tse", "0wi&lbRuPuv", "Ajay");

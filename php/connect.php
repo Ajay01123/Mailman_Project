@@ -3,7 +3,7 @@ session_start();
 class Model
 {
     public $host = 'localhost';
-    public $username = 'tes';
+    public $username = 'tse';
     public $password = '0wi&lbRuPuv';
     public $dbname = 'Ajay';
     public $conn;
