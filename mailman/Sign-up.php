@@ -117,7 +117,11 @@
 
              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
              <script src="../Js/sign-up.js"> </script>
-
+             <script>
+             if (window.history.replaceState) {
+                 window.history.replaceState(null, null, window.location.href);
+             }
+             </script>
 
  </body>
 
