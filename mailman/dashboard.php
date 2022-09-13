@@ -333,7 +333,7 @@ if ($_SESSION['email'] == "") {
 
                             <br>
                             <input type="email" class="form-control" name="Bcc" id="Bcc_modal1" readonly>
-                            <!-- <br> -->
+                            <br>
                             <input type="text" class="form-control" name="subject" id="sub-data1">
 
                             <br>
