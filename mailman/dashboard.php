@@ -394,7 +394,7 @@ if ($_SESSION['email'] == "") {
                 success: function(result) {
                     jQuery('.btn-close').trigger('click');
                     $('#success').html(
-                        '<div class="alert alert-warning alert-dismissible fade show" role="alert">' +
+                        '<div class="alert alert-warning alert-dismissible fade show" id="flash-msg" role="alert">' +
                         '<strong></strong> Message Send Successfully.' +
                         '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
                         '</div>');
@@ -431,7 +431,7 @@ if ($_SESSION['email'] == "") {
                 success: function(result) {
                     jQuery('.btn-close').trigger('click');
                     $('#success').html(
-                        '<div class="alert alert-warning alert-dismissible fade show" role="alert">' +
+                        '<div class="alert alert-warning alert-dismissible fade show"  id="flash-msg" role="alert">' +
                         '<strong></strong> Message Send Successfully.' +
                         '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
                         '</div>');
@@ -441,6 +441,9 @@ if ($_SESSION['email'] == "") {
             });
         })
     })
+    $(document).ready(function() {
+        $("#flash-msg").delay(1000).fadeOut("slow");
+    });
     </script>
 
 
