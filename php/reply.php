@@ -14,5 +14,4 @@ $read = 1;
 $Cc_delete = 1;
 $Bcc_delete = 1;
 $from = $_SESSION['email'];
-
 $db->reply($to, $msg, $from, $Inbox_detete, $date, $subject, $CC, $Bcc, $Cc_delete, $Bcc_delete, $Send_delete);

@@ -65,8 +65,8 @@ class Model
     } else {
       $page = 1;
     }
-    $start_per = 5;
-    $start_from = ($page - 1) * 5;
+    $start_per = 10;
+    $start_from = ($page - 1) * 10;
     $from = $_SESSION['email'];
     $query = "SELECT * FROM Send_Msg  where Send_delete = 1 AND `From` = '$from' ORDER BY Id DESC LIMIT $start_from, $start_per  ";
     $result = mysqli_query($this->conn, $query);
